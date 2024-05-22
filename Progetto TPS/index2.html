@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance Crypto Prices with Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #444;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+        }
+        .up {
+            background-color: green;
+            color: white;
+        }
+        .down {
+            background-color: red;
+            color: white;
+        }
+        img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Real-time Cryptocurrency Prices from Binance</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Price (USDT)</th>
+                <th>Price Change</th>
+                <th>Price Change Percent</th>
+                <th>Weighted Avg Price</th>
+                <th>Prev Close Price</th>
+                <th>Last Price</th>
+                <th>Last Qty</th>
+                <th>Bid Price</th>
+                <th>Ask Price</th>
+                <th>Open Price</th>
+                <th>High Price</th>
+                <th>Low Price</th>
+                <th>Volume</th>
+                <th>Quote Volume</th>
+            </tr>
+        </thead>
+        <tbody id="crypto-table-body">
+            <!-- Rows will be added here dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        let previousPrices = {};
+
+        async function fetchCryptoPrices() {
+            try {
+                const response = await fetch('https://api.binance.com/api/v3/ticker/24hr');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching crypto prices:', error);
+                return [];
+            }
+        }
+
+        async function fetchCryptoImages() {
+            try {
+                const response = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching crypto images:', error);
+                return [];
+            }
+        }
+
+        function updateTable(data, images) {
+            const tableBody = document.getElementById('crypto-table-body');
+            tableBody.innerHTML = ''; // Clear existing rows
+
+            const filteredData = data.filter(crypto => crypto.symbol.endsWith('USDT'));
+
+            filteredData.forEach(crypto => {
+                const row = document.createElement('tr');
+                const symbolCell = document.createElement('td');
+                const priceCell = document.createElement('td');
+                const priceChangeCell = document.createElement('td');
+                const priceChangePercentCell = document.createElement('td');
+                const weightedAvgPriceCell = document.createElement('td');
+                const prevClosePriceCell = document.createElement('td');
+                const lastPriceCell = document.createElement('td');
+                const lastQtyCell = document.createElement('td');
+                const bidPriceCell = document.createElement('td');
+                const askPriceCell = document.createElement('td');
+                const openPriceCell = document.createElement('td');
+                const highPriceCell = document.createElement('td');
+                const lowPriceCell = document.createElement('td');
+                const volumeCell = document.createElement('td');
+                const quoteVolumeCell = document.createElement('td');
+
+                const price = parseFloat(crypto.lastPrice).toFixed(2);
+                const previousPrice = previousPrices[crypto.symbol];
+
+                // Remove 'USDT' from the symbol to display only the cryptocurrency symbol
+                const symbol = crypto.symbol.replace('USDT', '');
+
+                // Get the corresponding image for the symbol
+                const image = images.find(img => img.symbol.toLowerCase() === symbol.toLowerCase());
+
+                symbolCell.innerHTML = image ? `<img src="${image.image}" alt="${symbol}"> ${symbol}` : symbol;
+                priceCell.textContent = price;
+                priceChangeCell.textContent = parseFloat(crypto.priceChange).toFixed(2);
+                priceChangePercentCell.textContent = parseFloat(crypto.priceChangePercent).toFixed(2) + '%';
+                weightedAvgPriceCell.textContent = parseFloat(crypto.weightedAvgPrice).toFixed(2);
+                prevClosePriceCell.textContent = parseFloat(crypto.prevClosePrice).toFixed(2);
+                lastPriceCell.textContent = parseFloat(crypto.lastPrice).toFixed(2);
+                lastQtyCell.textContent = parseFloat(crypto.lastQty).toFixed(2);
+                bidPriceCell.textContent = parseFloat(crypto.bidPrice).toFixed(2);
+                askPriceCell.textContent = parseFloat(crypto.askPrice).toFixed(2);
+                openPriceCell.textContent = parseFloat(crypto.openPrice).toFixed(2);
+                highPriceCell.textContent = parseFloat(crypto.highPrice).toFixed(2);
+                lowPriceCell.textContent = parseFloat(crypto.lowPrice).toFixed(2);
+                volumeCell.textContent = parseFloat(crypto.volume).toFixed(2);
+                quoteVolumeCell.textContent = parseFloat(crypto.quoteVolume).toFixed(2);
+
+                if (previousPrice !== undefined) {
+                    if (price > previousPrice) {
+                        priceCell.classList.add('up');
+                        setTimeout(() => {
+                            priceCell.classList.remove('up');
+                        }, 1000);
+                    } else if (price < previousPrice) {
+                        priceCell.classList.add('down');
+                        setTimeout(() => {
+                            priceCell.classList.remove('down');
+                        }, 1000);
+                    }
+                }
+
+                previousPrices[crypto.symbol] = price;
+
+                row.appendChild(symbolCell);
+                row.appendChild(priceCell);
+                row.appendChild(priceChangeCell);
+                row.appendChild(priceChangePercentCell);
+                row.appendChild(weightedAvgPriceCell);
+                row.appendChild(prevClosePriceCell);
+                row.appendChild(lastPriceCell);
+                row.appendChild(lastQtyCell);
+                row.appendChild(bidPriceCell);
+                row.appendChild(askPriceCell);
+                row.appendChild(openPriceCell);
+                row.appendChild(highPriceCell);
+                row.appendChild(lowPriceCell);
+                row.appendChild(volumeCell);
+                row.appendChild(quoteVolumeCell);
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        async function updateCryptoPrices() {
+            const [binanceData, coingeckoData] = await Promise.all([fetchCryptoPrices(), fetchCryptoImages()]);
+            updateTable(binanceData, coingeckoData);
+        }
+
+        // Update prices every 5 seconds
+        setInterval(updateCryptoPrices, 1000);
+
+        // Initial load
+        updateCryptoPrices();
+    </script>
+</body>
+</html>
