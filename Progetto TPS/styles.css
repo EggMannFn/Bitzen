@@ -30,6 +30,16 @@ body {
     margin-bottom: 10px;
 }
 
+.table-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table-container {
+    flex: 1;
+    margin: 10px;
+}
+
 .main {
     flex: 1;
     display: flex;
