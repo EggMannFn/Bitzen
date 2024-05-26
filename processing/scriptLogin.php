@@ -34,7 +34,7 @@
                     setcookie("password", $password, time()+60*60*24*7*30, "/");
                 }
 
-                return header("Refresh:0; url=../homepage.php");
+                return header("Refresh:0; url=../main.php");
 
             }else{ 
                 header("Refresh:0; url =../login.php?passwordErrata=true");

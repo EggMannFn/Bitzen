@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    if(isset($_SESSION["Login"]) && $_SESSION["Login"] === true){
+    }else{
+        return header("refresh:0; url=login.php?UtenteNonLoggato=true");
+    }
+?>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +24,7 @@
             <a href="#">Security</a>
             <a href="#">Transactions</a>
             <a href="#">Settings</a>
-            <a href="#">Logout</a>
+            <a href="logout.php">Logout</a>
         </div>
         <div class="main">
             <h1>Cryptocurrency Dashboard</h1>
