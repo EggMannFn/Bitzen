@@ -99,6 +99,12 @@ function updateTable(data, images, tableId) {
         symbolCell.innerHTML = image ? `<img src="${image.image}" alt="${symbol}" width="20"> ${symbol}` : symbol;
         priceCell.textContent = parseFloat(crypto.lastPrice).toFixed(2);
         priceChangeCell.textContent = `${parseFloat(crypto.priceChangePercent).toFixed(2)}%`;
+
+        // Determine color based on price change
+        const color = parseFloat(crypto.priceChangePercent) >= 0 ? 'rgba(0, 232, 182, 1)' : 'rgba(208, 89, 89, 1)';
+        priceChangeCell.style.color = color;
+        priceCell.style.color = color;
+
         volumeCell.textContent = parseFloat(crypto.volume).toLocaleString();
         marketCapCell.textContent = image ? image.market_cap.toLocaleString() : '-';
 
@@ -111,6 +117,7 @@ function updateTable(data, images, tableId) {
         tableBody.appendChild(row);
     });
 }
+
 
 async function updateAllTables() {
     try {
