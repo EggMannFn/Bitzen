@@ -1,12 +1,4 @@
-[16:24] DENISON UMAYAM
-<?php
-    session_start();
- 
-    if(isset($_SESSION["Login"]) && $_SESSION["Login"] === true){
-    }else{
-        return header("refresh:0; url=login.php?UtenteNonLoggato=true");
-    }
-?>    
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +21,12 @@
         </div>
         <div class="main">
             <h1>Cryptocurrency Dashboard</h1>
+            <div class="crypto-container">
+                <div class="crypto-box" id="BTC"></div>
+                <div class="crypto-box" id="ETH"></div>
+                <div class="crypto-box" id="BNB"></div>
+            </div>
+            
             <div class="section">
                 <h2>Most Popular Cryptos</h2>
                 <table class="crypto-table" id="most-popular">
