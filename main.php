@@ -9,16 +9,21 @@
 </head>
 <body>
     <div class="dashboard">
-        <div class="sidebar">
-            <h2>Dashboard</h2>
-            <a href="#">Dashboard</a>
-            <a href="#">Wallet</a>
-            <a href="#">Trading</a>
-            <a href="#">Security</a>
-            <a href="#">Transactions</a>
-            <a href="#">Settings</a>
-            <a href="#">Logout</a>
-        </div>
+<div class="sidebar">
+    <h2>Dashboard</h2>
+    <div class="link-group">
+        <a href="#"><img src="side-icons/dashboard.png" alt="Dashboard"> Dashboard</a>
+        <a href="#"><img src="side-icons/wallet.png" alt="Wallet"> Wallet</a>
+        <a href="#"><img src="side-icons/trading.png" alt="Trading"> Trading</a>
+        <a href="#"><img src="side-icons/security.png" alt="Security"> Security</a>
+        <a href="#"><img src="side-icons/transactions.png" alt="Transactions"> Transactions</a>
+    </div>
+    <div class="bottom-links">
+        <a href="#"><img src="side-icons/settings.png" alt="Settings"> Settings</a>
+        <a href="#"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
+    </div>
+</div>
+
         <div class="main">
             <h1>Cryptocurrency Dashboard</h1>
             <div class="first">
