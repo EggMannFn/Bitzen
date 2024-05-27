@@ -26,6 +26,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: 0.6s;    
+
+}
+
+.crypto-box:hover {
+    background-color: rgba(9, 175, 143, 1);
+    padding: 30px;
+    transition: 0.6s;    
+    width: 230px;
 }
 
 .crypto-box img {
