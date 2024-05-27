@@ -32,9 +32,9 @@ body {
 
 .crypto-box:hover {
     background-color: rgba(9, 175, 143, 1);
-    padding: 30px;
-    transition: 0.6s;    
-    width: 230px;
+    margin: -5px;
+    padding: 25px;
+    width: 210px;
 }
 
 .crypto-box img {
