@@ -34,8 +34,10 @@ function updateCryptoBox(crypto, image, elementId) {
     if (image) {
         container.innerHTML = `
             <img src="${image.image}" alt="${symbol}">
-            <div class="crypto-name">${symbol}</div>
-            <div class="crypto-price">$ ${price}</div>
+            <div class="crypto-info">
+                <div class="crypto-name">${symbol}</div>
+                <div class="crypto-price">$ ${price}</div>
+            </div>
         `;
     } else {
         console.warn(`Image not found for ${symbol}`);
@@ -91,7 +93,6 @@ function updateTable(data, images, tableId) {
         const priceChangeCell = document.createElement('td');
         const volumeCell = document.createElement('td');
         const marketCapCell = document.createElement('td');
-        const actionsCell = document.createElement('td');
 
         const symbol = crypto.symbol.replace('USDT', '');
         const image = images.find(img => img.symbol.toLowerCase() === symbol.toLowerCase());
@@ -100,14 +101,12 @@ function updateTable(data, images, tableId) {
         priceChangeCell.textContent = `${parseFloat(crypto.priceChangePercent).toFixed(2)}%`;
         volumeCell.textContent = parseFloat(crypto.volume).toLocaleString();
         marketCapCell.textContent = image ? image.market_cap.toLocaleString() : '-';
-        actionsCell.innerHTML = '<button>Buy</button> <button>Sell</button>';
 
         row.appendChild(symbolCell);
         row.appendChild(priceCell);
         row.appendChild(priceChangeCell);
         row.appendChild(volumeCell);
         row.appendChild(marketCapCell);
-        row.appendChild(actionsCell);
 
         tableBody.appendChild(row);
     });
