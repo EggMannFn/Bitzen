@@ -136,5 +136,5 @@ async function updateAllTables() {
 // Initial load and periodic updates
 document.addEventListener('DOMContentLoaded', async () => {
     await updateAllTables();
-    setInterval(updateAllTables, 3000);
+    setInterval(updateAllTables, 30000);
 });
