@@ -89,7 +89,7 @@ header a:hover {
     color: #fff;
 }
 
-.password-container {
+/* .password-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -103,7 +103,41 @@ header a:hover {
 
 .password-container .forgot-password:hover {
     color: #00b386;
+} */
+
+
+
+
+/* login.css */
+
+/* Aggiungi questa parte al tuo file CSS esistente */
+.password-label-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
 }
+
+.password-label-container label {
+    margin: 0;
+}
+
+.password-label-container .forgot-password {
+    margin-left: auto;
+    text-decoration: none;
+    color: #00cc99;
+    font-size: 0.9em;
+}
+
+.password-label-container .forgot-password:hover {
+    color: #00b386;
+}
+
+
+
+
+
+
 
 .remember-me {
     display: flex;
