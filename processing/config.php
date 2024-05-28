@@ -19,7 +19,7 @@
     $type = "mysql";
     $server = "localhost";
     $port=3306;
-    $db="trading";
+    $db="demo_db";
     $charset="utf8mb4";
     $username="root";
     $password="";
