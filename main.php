@@ -15,7 +15,7 @@
     <h2>Dashboard</h2>
     <div class="link-group">
         <a href="#"><img src="side-icons/dashboard.png" alt="Dashboard"> Dashboard</a>
-        <a href="#"><img src="side-icons/wallet.png" alt="Wallet"> Wallet</a>
+        <a href="wallet.php"><img src="side-icons/wallet.png" alt="Wallet"> Wallet</a>
         <a href="#"><img src="side-icons/trading.png" alt="Trading"> Trading</a>
         <a href="#"><img src="side-icons/security.png" alt="Security"> Security</a>
         <a href="#"><img src="side-icons/transactions.png" alt="Transactions"> Transactions</a>
