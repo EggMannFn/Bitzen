@@ -34,7 +34,7 @@ if(isset($_POST["email"])){ //?
             ":email" => $email,
             ":pwd" => $passwordHash
         ]));
-        header("Refresh:0; url=./login.php");
+        header("Refresh:0;url=../login/login.php");
     }
 }
 else {
