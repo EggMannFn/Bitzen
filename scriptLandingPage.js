@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const tableBody = document.querySelector('#most-popular tbody');
+    const tableBodyMostPopular = document.querySelector('#most-popular tbody');
+    const tableBodyNewListings = document.querySelector('#new-listing tbody');
+
     const popularCryptos = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'SOLUSDT', 'XRPUSDT'];
 
     // Mappa di corrispondenza tra simboli e nomi completi delle criptovalute
@@ -16,16 +18,26 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json());
     };
 
+    const fetchNewListings = () => {
+        return fetch('https://api.binance.com/api/v1/exchangeInfo')
+            .then(response => response.json())
+            .then(data => {
+                // Ottieni le ultime 5 criptovalute listate
+                const newCryptos = data.symbols.slice(-5).reverse(); // Prendi le ultime 5 e inverti l'ordine per visualizzarle dalla più recente alla meno recente
+                return newCryptos;
+            });
+    };
+
     const formatPrice = (price) => {
         // Formatta il prezzo con la virgola ogni tre cifre delle unità e il simbolo della valuta
         return '$' + parseFloat(price).toLocaleString(undefined, {minimumFractionDigits: 2});
     };
 
-    const updateTable = () => {
+    const updateTableMostPopular = () => {
         Promise.all(popularCryptos.map(fetchCryptoData))
             .then(cryptosData => {
                 cryptosData.forEach(asset => {
-                    let row = document.querySelector(`tr[data-symbol="${asset.symbol}"]`);
+                    let row = document.querySelector(`#most-popular tr[data-symbol="${asset.symbol}"]`);
                     
                     if (!row) {
                         // Crea una nuova riga se non esiste
@@ -44,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         priceChangeCell.classList.add('price-change');
                         row.appendChild(priceChangeCell);
 
-                        tableBody.appendChild(row);
+                        tableBodyMostPopular.appendChild(row);
                     }
 
                     // Ottieni il nome esteso della criptovaluta
@@ -60,13 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const priceChangeElement = row.querySelector('.price-change');
                     priceChangeElement.textContent = `${priceChangePercent.toFixed(2)}%`;
 
-                    // if (priceChangePercent > 0) {
-                    //     priceChangeElement.style.color = rgba(0, 232, 182, 1); // Cambia il colore del testo in verde se priceChange è positivo
-                    // } else if (priceChangePercent < 0) {
-                    //     priceChangeElement.style.color = rgba(208, 89, 89, 1); // Cambia il colore del testo in rosso se priceChange è negativo
-                    // }
-
-                    const color = priceChangePercent >= 0 ? 'rgba(0, 232, 182, 1)' : 'rgba(208, 89, 89, 1)';
+                    const color = priceChangePercent >= 0 ? 'green' : 'red';
                     priceChangeElement.style.color = color;
                 });
             })
@@ -75,9 +81,44 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     };
 
-    // Aggiorna la tabella immediatamente quando la pagina viene caricata
-    updateTable();
+    const updateTableNewListings = () => {
+        fetchNewListings()
+            .then(newCryptos => {
+                newCryptos.forEach(crypto => {
+                    const row = document.createElement('tr');
 
-    // Imposta un intervallo per aggiornare la tabella ogni 30 secondi
-    setInterval(updateTable, 30000);
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = crypto.baseAsset;
+                    row.appendChild(nameCell);
+
+                    const symbolCell = document.createElement('td');
+                    symbolCell.textContent = crypto.symbol;
+                    row.appendChild(symbolCell);
+
+                    const priceCell = document.createElement('td');
+                    priceCell.textContent = formatPrice(crypto.price);
+                    row.appendChild(priceCell);
+
+                    const statusCell = document.createElement('td');
+                    statusCell.textContent = crypto.status;
+                    row.appendChild(statusCell);
+
+                    const listingDateCell = document.createElement('td');
+                    listingDateCell.textContent = new Date(crypto.listingDate).toLocaleDateString();
+                    row.appendChild(listingDateCell);
+
+                    tableBodyNewListings.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching new listings from Binance API:', error);
+            });
+    };
+
+    // Aggiorna la tabella immediatamente quando la pagina viene caricata
+    updateTableMostPopular();
+    updateTableNewListings();
+
+    // Imposta un intervallo per aggiornare la tabella delle criptovalute più popolari ogni 30 secondi
+    setInterval(updateTableMostPopular, 30000);
 });
