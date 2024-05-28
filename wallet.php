@@ -33,6 +33,18 @@ if (isset($price)) {
     echo "Prezzo di bitcoin: $btcPrice USD";
 }
 
+$sql = "SELECT quantita, prezzoBuy FROM transazione WHERE id_wallet = 2 AND moneta = 'BTCUSDT'";
+$result = $connessione->query($sql);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+if ($row === false) {
+    die("Error: Transazione non trovata");
+}
+$quantityBought = $row['quantita'];
+$buyPrice = $row['prezzoBuy'];
+
+$gainLoss = ($btcPrice - $buyPrice) * $quantityBought;
+echo "Guadagno/perdita di BTC: $gainLoss USD";
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['quantity'])) {
     $quantity = $_POST['quantity'];
