@@ -1,27 +1,28 @@
 <?php
 require_once("../processing/config.php");
-if(isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["data_nascita"]) && isset($_POST["telefono"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm_password"]) && isset($_POST["terms"])){
 
-    if(strlen($_POST["nome"]) < 5 || strlen($_POST["cognome"]) < 5){
+if (isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["data_nascita"]) && isset($_POST["telefono"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm_password"]) && isset($_POST["terms"])) {
+
+    if (strlen($_POST["nome"]) < 5 || strlen($_POST["cognome"]) < 5) {
         header("Refresh:0;url=register.php?usernameMin5Lenght=false");
-    }
-    else if($_POST["password"] !== $_POST["confirm_password"])
+    } else if ($_POST["password"] !== $_POST["confirm_password"]) {
         header("Refresh:0;url=register.php?passwordErrate=true");
-    else {
+    } else {
         header("Refresh:0; url=scriptRegister.php");
     }
 }
+
+//precompilo il campo email con la mail inserita nella landingPage
+$email = isset($_POST['email']) ? $_POST['email'] : '';
 ?>
 
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrazione - Bitzen</title>
     <link rel="stylesheet" href="register.css">
-</head>
 </head>
 <body>
     <nav>
@@ -61,7 +62,7 @@ if(isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["data_nasci
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required placeholder="latuamail@dominio.it">
+                    <input type="email" id="email" name="email" required placeholder="latuamail@dominio.it" value="<?php echo $email; ?>">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
