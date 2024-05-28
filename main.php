@@ -79,6 +79,13 @@
             </tbody>
         </table>
     </div>
+
+    <div class="sectionTrans">
+        <h2>Recent Transactions</h2>
+            <table class="transactions-table" id="recentTransactions">
+    
+            </table>
+    </div>
 </div>
 
             
