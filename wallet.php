@@ -1,6 +1,16 @@
 <?php
 require_once("processing/config.php");
 
+
+//CHECK DI QUANTO HAI DI BILANCIO
+$sql = "SELECT denaroDemo FROM wallet WHERE id_wallet = 2";
+$result = $connessione->query($sql);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+if ($row === false) {
+    die("Error: Wallet non trovato :(");
+}
+$currentBalance = $row['denaroDemo'];
+
 $apiUrl = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT";
 
 $ch = curl_init();
@@ -20,28 +30,18 @@ $data = json_decode($response, true);
 $price = $data['price'];
 if (isset($price)) {
     $btcPrice = $data['price'];
-    echo "The current price of Bitcoin (BTC) is: $btcPrice USD";
+    echo "Prezzo di bitcoin: $btcPrice USD";
 }
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['quantity'])) {
     $quantity = $_POST['quantity'];
 
     $totalCost = $quantity * $btcPrice;
 
-
-    // Bilancio presente nel wallet
-    $sql = "SELECT denaroDemo FROM wallet WHERE id_wallet = 2";
-    $result = $connessione->query($sql);
-    $row = $result->fetch(PDO::FETCH_ASSOC);
-    if ($row === false) {
-        die("Error: Wallet not found");
-    }
-    $currentBalance = $row['denaroDemo'];
-
-
     // Check se è abbstanza
     if ($currentBalance < $totalCost) {
-        die("Error: Not enough money in wallet");
+        die("Error: Non hai abbastanza soldi nel wallet per comprare $quantity BTC.");
     }
 
     // Sottrai il costo della transazione dal bilancio
@@ -57,16 +57,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['quantity'])) {
     $sql = "INSERT INTO transazione (id_transazione, id_wallet, moneta, quantita, prezzoBuy, timestamp) VALUES (null, 2, 'BTCUSDT', $quantity, $btcPrice, CURRENT_TIMESTAMP)";
 
     if ($connessione->query($sql) == TRUE) {
-        echo "Transaction successful! You bought $quantity BTC for a total of $totalCost USD.";
+        header("Location: wallet.php");
+        exit;
     }
     else{
         echo "Error: " . $sql . "<br>" . $connessione->error;
     }
 }
+
+echo "<h2>Acquista Bitcoin</h2>";
+echo "<p>nel wallet hai: </p>";
+echo "<p>$currentBalance USD</p>";
 ?>
 
+
 <form method="post" action="">
-    <label for="quantity">Quantity:</label><br>
+    <label for="quantity">Quantità da comprare:</label><br>
     <input type="number" id="quantity" name="quantity" min="0.0001" step="0.0001" required><br>
     <input type="submit" value="Buy Bitcoin">
 </form>
