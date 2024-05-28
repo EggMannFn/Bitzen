@@ -1,15 +1,23 @@
 <?php
 require_once("processing/config.php");
 
+session_start();
+if(!isset($_SESSION["login"]) || $_SESSION["login"] != true) {
+    header("Location: login/login.php");
+    exit;
+}
+
+$id_wallet = $_SESSION["wallet"]["id_wallet"];
 
 //CHECK DI QUANTO HAI DI BILANCIO
-$sql = "SELECT denaroDemo FROM wallet WHERE id_wallet = 2";
+$sql = "SELECT denaroDemo FROM wallet WHERE id_wallet = $id_wallet";
 $result = $connessione->query($sql);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 if ($row === false) {
     die("Error: Wallet non trovato :(");
 }
 $currentBalance = $row['denaroDemo'];
+
 
 $apiUrl = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT";
 
@@ -33,17 +41,19 @@ if (isset($price)) {
     echo "Prezzo di bitcoin: $btcPrice USD";
 }
 
-$sql = "SELECT quantita, prezzoBuy FROM transazione WHERE id_wallet = 2 AND moneta = 'BTCUSDT'";
+$sql = "SELECT quantita, prezzoBuy FROM transazione WHERE id_wallet = $id_wallet AND moneta = 'BTCUSDT'";
 $result = $connessione->query($sql);
 $row = $result->fetch(PDO::FETCH_ASSOC);
-if ($row === false) {
-    die("Error: Transazione non trovata");
+if ($row == false) {
+    echo "<br> Transazioni non trovate, compra prima di sapere il guadagno/perdita.";
 }
-$quantityBought = $row['quantita'];
-$buyPrice = $row['prezzoBuy'];
+else {
+    $quantityBought = $row['quantita'];
+    $buyPrice = $row['prezzoBuy'];
+    $gainLoss = ($btcPrice - $buyPrice) * $quantityBought;
+    echo "Guadagno/perdita di BTC: $gainLoss USD";
+}
 
-$gainLoss = ($btcPrice - $buyPrice) * $quantityBought;
-echo "Guadagno/perdita di BTC: $gainLoss USD";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['quantity'])) {
@@ -51,22 +61,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['quantity'])) {
 
     $totalCost = $quantity * $btcPrice;
 
-    // Check se è abbstanza
     if ($currentBalance < $totalCost) {
-        die("Error: Non hai abbastanza soldi nel wallet per comprare $quantity BTC.");
+        die("Non hai abbastanza soldi nel wallet per comprare $quantity BTC.");
     }
-
-    // Sottrai il costo della transazione dal bilancio
     $newBalance = $currentBalance - $totalCost;
 
     // Aggiorna il bilancio
-    $sql = "UPDATE wallet SET denaroDemo = $newBalance WHERE id_wallet = 2";
+    $sql = "UPDATE wallet SET denaroDemo = $newBalance WHERE id_wallet = $id_wallet";
     if ($connessione->query($sql) != TRUE) {
         die("Error: " . $sql . "<br>" . $connessione->error);
     }
 
     // Inserisci la transazione
-    $sql = "INSERT INTO transazione (id_transazione, id_wallet, moneta, quantita, prezzoBuy, timestamp) VALUES (null, 2, 'BTCUSDT', $quantity, $btcPrice, CURRENT_TIMESTAMP)";
+    $sql = "INSERT INTO transazione (id_transazione, id_wallet, moneta, quantita, prezzoBuy, timestamp) VALUES (null, $id_wallet, 'BTCUSDT', $quantity, $btcPrice, CURRENT_TIMESTAMP)";
 
     if ($connessione->query($sql) == TRUE) {
         header("Location: wallet.php");
