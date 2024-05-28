@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Mag 20, 2024 alle 19:12
--- Versione del server: 10.4.32-MariaDB
--- Versione PHP: 8.2.12
+-- Host: localhost
+-- Creato il: Mag 28, 2024 alle 09:25
+-- Versione del server: 10.4.28-MariaDB
+-- Versione PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,11 +29,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `utenti` (
   `id_utente` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `cognome` varchar(100) NOT NULL,
+  `data_nascita` date NOT NULL,
+  `telefono` int(10) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(60) NOT NULL,
-  `data_di_nascita` date NOT NULL,
-  `registrato_il` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -44,9 +45,7 @@ CREATE TABLE `utenti` (
 -- Indici per le tabelle `utenti`
 --
 ALTER TABLE `utenti`
-  ADD PRIMARY KEY (`id_utente`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD PRIMARY KEY (`id_utente`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -56,7 +55,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_utente` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

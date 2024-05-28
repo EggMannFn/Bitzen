@@ -25,7 +25,7 @@
         <div class="form-container">
             <h1>Crea ora il tuo account su Bitzen!</h1>
 
-            <form action="./scriptRegistratiTEO.php" method="post">
+            <form action="scriptRegistratiTEO.php" method="post">
                 <div class="form-group">
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" required placeholder="Andrea">

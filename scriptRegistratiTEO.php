@@ -1,5 +1,5 @@
 <?php
-require_once "./processing/config.php";
+require_once ("./processing/config.php");
 
 if (isset($_POST["email"]) && isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["data_nascita"]) && isset($_POST["telefono"]) && isset($_POST["password"]) && isset($_POST["confirm_password"])) {
     $nome = $_POST["nome"];
