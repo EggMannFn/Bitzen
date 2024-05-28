@@ -144,3 +144,63 @@ document.addEventListener('DOMContentLoaded', async () => {
     await updateAllTables();
     setInterval(updateAllTables, 30000);
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const apiKey = 'cb93be4a22cb6324dd1ff20de67e7302e17844fab9e3fef6441cd34d698d437c';
+    const url = `https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=30&api_key=${apiKey}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const btcData = data.Data.Data.map(day => ({
+                time: new Date(day.time * 1000).toISOString().split('T')[0],
+                price: day.close
+            }));
+
+            if (btcData.length === 0) {
+                console.error('No data available');
+                return;
+            }
+
+            const formattedData = btcData.map(point => ({
+                x: new Date(point.time),
+                y: point.price
+            }));
+
+            const ctx = document.getElementById('btcChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'BTC/USD',
+                        data: formattedData,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: false,
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Price (USD)'
+                            }
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
+

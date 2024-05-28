@@ -14,22 +14,37 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 // Esegui la richiesta e decodifica la risposta JSON
 $response = curl_exec($ch);
+
+// Controlla se ci sono errori nella richiesta cURL
+if (curl_errno($ch)) {
+    echo 'Errore cURL: ' . curl_error($ch);
+    exit;
+}
+
 $data = json_decode($response, true);
 
 // Chiudi la sessione cURL
 curl_close($ch);
 
-// Prepara i dati per il grafico
-$prices = [];
-foreach ($data['Data']['Data'] as $day) {
-    $prices[] = [
-        'time' => date('Y-m-d', $day['time']),
-        'price' => $day['close']
-    ];
+// Verifica se la risposta contiene dati
+if (isset($data['Data']['Data'])) {
+    // Prepara i dati per il grafico
+    $prices = [];
+    foreach ($data['Data']['Data'] as $day) {
+        $prices[] = [
+            'time' => date('Y-m-d', $day['time']),
+            'price' => $day['close']
+        ];
+    }
+    // Converti i dati in formato JSON
+    $pricesJson = json_encode($prices);
+} else {
+    // Se la risposta non contiene dati, imposta un array vuoto e stampa un messaggio di errore
+    $pricesJson = json_encode([]);
+    echo 'Errore nella risposta dell\'API: ';
+    var_dump($data);
+    exit;
 }
-
-// Converti i dati in formato JSON
-$pricesJson = json_encode($prices);
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +54,7 @@ $pricesJson = json_encode($prices);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitcoin Price Chart</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 </head>
 <body>
     <canvas id="btcChart" width="400" height="200"></canvas>
@@ -46,6 +62,13 @@ $pricesJson = json_encode($prices);
         document.addEventListener("DOMContentLoaded", function() {
             // Recupera i dati PHP in formato JSON
             const btcData = <?php echo $pricesJson; ?>;
+            console.log('BTC Data:', btcData); // Debug: stampa i dati sulla console
+
+            if (btcData.length === 0) {
+                console.error('No data available');
+                return;
+            }
+
             const formattedData = btcData.map(point => ({
                 x: new Date(point.time),
                 y: point.price

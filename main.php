@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cryptocurrency Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 </head>
 <body>
     <div class="dashboard">
@@ -27,21 +29,27 @@
         <div class="main">
             <h1>Cryptocurrency Dashboard</h1>
             <div class="first">
-    <div class="crypto-container">
-        <div class="crypto-box" id="BTC"></div>
-        <div class="crypto-box" id="ETH"></div>
-        <div class="crypto-box" id="BNB"></div>
-    </div>
+                <div class="cryptoCanva">
+                    <div class="crypto-container">
+                        <div class="crypto-box" id="BTC"></div>
+                        <div class="crypto-box" id="ETH"></div>
+                        <div class="crypto-box" id="BNB"></div>
+                    </div>
+                    <div class="canvaChoose">
+                        <canvas id="btcChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
 
-    <div class="exchange-container">
-        <div class="exchange-box">
-            <h1>EXCHANGE</h1>
-            <input type="text" placeholder="Input 1">
-            <input type="text" placeholder="Input 2">
-            <button>Exchange</button>
+
+                <div class="exchange-container">
+                    <div class="exchange-box">
+                    <h1>EXCHANGE</h1>
+                    <input type="text" placeholder="Input 1">
+                    <input type="text" placeholder="Input 2">
+                    <button>Exchange</button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
 
 <div class="second">
