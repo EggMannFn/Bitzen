@@ -48,12 +48,11 @@
 
             <div class="new-listing">
                 <h2>Nuovo listing</h2>
-                <ul>
-                    <li>NXT Nxt <span class="price">$0.00495</span> <span class="change negative">-7,02%</span></li>
-                    <li>GT GateToken <span class="price">$0.3575</span> <span class="change positive">+4,08%</span></li>
-                    <li>CSPR Casper <span class="price">$0.1346</span> <span class="change positive">+3,83%</span></li>
-                    <li>ZEON Zeon <span class="price">$15.05</span> <span class="change positive">+0,33%</span></li>
-                </ul>
+                <table class="crypto-table" id="new-listing">
+                    <tbody>
+                        <!-- Le righe saranno aggiunte dinamicamente qui -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </main>
