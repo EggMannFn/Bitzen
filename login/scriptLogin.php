@@ -41,7 +41,22 @@ if(isset($email) && isset($password))
             $wallet = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($wallet === false) {
-                die("Error: Wallet non trovato");
+                $sql = "INSERT INTO `wallet`(`id_wallet`, `id_utente`, `denaroDemo`, `qBTC`, `qBNB`, `qETH`, `qSOL`, `qXRP`) VALUES (null, :id_utente, '1000000', '0', '0', '0', '0', '0')";
+                $stmt = $connessione->prepare($sql);
+                $stmt->execute([
+                    ":id_utente"=> $id_utente
+                ]);
+
+                $sql = "SELECT id_wallet, id_utente, denaroDemo, qBTC, qBNB, qETH, qSOL, qXRP FROM wallet WHERE id_utente = :id_utente";
+                $stmt = $connessione->prepare($sql);
+                $stmt->execute([
+                    ":id_utente"=> $id_utente
+                ]);
+                $wallet = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if ($wallet === false) {
+                    die("Error: Wallet non trovato dopo la creazione");
+                }
             }
 
             $_SESSION["wallet"] = $wallet;
