@@ -1,0 +1,74 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.content-wrapper {
+    display: flex; /* Flexbox layout to arrange image and form side by side */
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #333; /* Dark background for the entire page */
+}
+
+.market-chart {
+    max-width: 400px; /* Control the size of the chart image */
+    margin-right: 20px; /* Space between the chart and the form */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    /* margin-right:auto;
+margin-left:auto; */
+
+position: absolute;
+top: 50%;
+left: 50%;
+margin-top: -100px;
+margin-left: -100px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons button {
+    width: 48%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.buttons .sell-button {
+    background-color: #f44336;
+}
+
+.asset-info p, .total-price {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.quantity-selector input {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.buy-assets {
+    width: 100%;
+    padding: 10px;
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
