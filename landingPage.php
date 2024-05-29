@@ -12,7 +12,7 @@
     <div class="container">
         <nav>
             <!-- manca il logo -->
-            <div class="logo">BITZEN</div>
+            <div><a class="logo" href="./landingPage.php">BITZEN</a></div>
             <ul>
                 <li class="btn_navbar"><a href="#">Compra Crypto</a></li>
                 <li class="btn_navbar"><a href="#">Mercati</a></li>
