@@ -23,27 +23,49 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrazione - Bitzen</title>
     <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="../navbar.css">
 </head>
 <body>
-    <div class="logo">BITZEN</div>
+<header>
+    <div class="container">
+        <nav>
+            <!-- manca il logo -->
+            <div class="logo">BITZEN</div>
+            <ul>
+                <li class="btn_navbar"><a href="#">Compra Crypto</a></li>
+                <li class="btn_navbar"><a href="#">Mercati</a></li>
+                <li class="btn_navbar"><a href="#">Prezzi</a></li>
+                <li class="btn_navbar"><a href="#">Trading</a></li>
+                <li class="btn_navbar"><a href="#">Altro</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="../login/login.php" class="login">Accedi</a>
+            <a href="../register/register.php" class="register">Registrati</a>
+        </div>
+    </div>
+</header>
     <main>
+        <h1>Crea ora il tuo account su Bitzen!</h1>
         <div class="form-container">
-            <h1>Crea ora il tuo account su Bitzen!</h1>
-
             <form action="scriptRegister.php" method="post">
-                <div class="form-group">
-                    <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" required placeholder="Andrea">
-                </div>
-                <div class="form-group">
-                    <label for="cognome">Cognome</label>
-                    <input type="text" id="cognome" name="cognome" required placeholder="Maffi">
-                </div>
-                <div class="form-group">
+
+
+                    <div class="form-group-line">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Andrea">
+                    </div>
+                    <div class="form-group-line" id="margin">
+                        <label for="cognome">Cognome</label>
+                        <input type="text" id="cognome" name="cognome" required placeholder="Maffi">
+                    </div>
+
+                
+                <div class="form-group-line">
                     <label for="data_nascita">Data di Nascita</label>
                     <input type="date" id="data_nascita" name="data_nascita" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group-line" id="margin">
                     <label for="telefono">Telefono</label>
                     <input type="text" id="telefono" name="telefono" required placeholder="3518736524">
                 </div>
@@ -59,10 +81,11 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
                     <label for="confirm_password">Conferma Password</label>
                     <input type="password" id="confirm_password" name="confirm_password" required>
                 </div>
-                <div class="form-group">
-                    <input type="checkbox" id="terms" name="terms" required>
-                    <label for="terms">Creando un account, accetto i <a href="#">Termini di servizio</a> e l'<a href="#">Informativa sulla privacy</a> di Bitzen.</label>
-                </div>
+                <div class="form-group form-group-inline">
+    <input type="checkbox" id="terms" name="terms" required>
+    <label class="cbx_content" for="terms">Creando un account, accetto i <a href="#">Termini di servizio</a> e l'<a href="#">Informativa sulla privacy</a> di Bitzen.</label>
+</div>
+
 
                 <input type="submit" value="Crea account">
             </form>
