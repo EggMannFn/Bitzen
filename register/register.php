@@ -25,20 +25,7 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
     <link rel="stylesheet" href="register.css">
 </head>
 <body>
-    <nav>
-        <div class="logo">BITZEN</div>
-        <ul>
-            <li><a href="#">Compra Crypto</a></li>
-            <li><a href="#">Mercati</a></li>
-            <li><a href="#">Prezzi</a></li>
-            <li><a href="#">Trading</a></li>
-            <li><a href="#">Altro</a></li>
-        </ul>
-        <div class="auth-buttons">
-            <a href="#" class="login">Accedi</a>
-            <a href="#" class="register">Registrati</a>
-        </div>
-    </nav>
+    <div class="logo">BITZEN</div>
     <main>
         <div class="form-container">
             <h1>Crea ora il tuo account su Bitzen!</h1>
