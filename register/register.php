@@ -81,10 +81,11 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
                     <label for="confirm_password">Conferma Password</label>
                     <input type="password" id="confirm_password" name="confirm_password" required>
                 </div>
+                
                 <div class="form-group form-group-inline">
-    <input type="checkbox" id="terms" name="terms" required>
-    <label class="cbx_content" for="terms">Creando un account, accetto i <a href="#">Termini di servizio</a> e l'<a href="#">Informativa sulla privacy</a> di Bitzen.</label>
-</div>
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label class="cbx_content" for="terms">Creando un account, accetto i <a href="#">Termini di servizio</a> e l'<a href="#">Informativa sulla privacy</a> di Bitzen.</label>
+                </div>
 
 
                 <input type="submit" value="Crea account">
