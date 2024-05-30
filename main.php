@@ -22,7 +22,7 @@
     </div>
     <div class="bottom-links">
         <a href="#"><img src="side-icons/settings.png" alt="Settings"> Settings</a>
-        <a href="#"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
+        <a href="./login/logout.php"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
     </div>
 </div>
 
@@ -94,17 +94,8 @@
     
             </table>
     </div>
-</div>
-
-            
-
-            
-
-
-
-
-
-            <div class="section">
+    </div>
+        <div class="section">
                 <h2>Most Traded</h2>
                 <table class="crypto-table" id="most-traded">
                     <thead>
@@ -126,4 +117,3 @@
     <script src="script.js"></script>
 </body>
 </html>
- 
