@@ -10,6 +10,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 </head>
 <body>
+    <?php
+if(!isset($_SESSION["login"]) || $_SESSION["login"] != true) {
+    header("Location: ./login/login.php");
+    exit;
+}
+?>
     <div class="dashboard">
 <div class="sidebar">
     <h2>Dashboard</h2>
