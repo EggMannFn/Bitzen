@@ -51,9 +51,9 @@
                 <label for="password">Password</label>
                 <input type="password" name="password" id="id_password" value="<?=$password?>" placeholder="password">
             </div>
-            <div class="form_group">
+            <div class="form_groupRicordami">
                 <input type="checkbox" name="ricordami">
-                <label for="ricordami">Ricorda le mie credenziali</label>
+                <label for="ricordami" class="ricordaLabel">Ricorda le mie credenziali</label>
             </div>
 
             <input type="submit" value="Accedi" id="btn_accedi">

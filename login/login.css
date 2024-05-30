@@ -61,4 +61,12 @@ input[type="submit"] {
     color: #cacaca31;
 }
 
+.form_groupRicordami {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
 
+.ricordaLabel {
+    margin-left: 8px;
+}
