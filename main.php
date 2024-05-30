@@ -97,23 +97,6 @@
 </div>
 
             
-            <div class="section">
-                <h2>Most Popular Cryptos</h2>
-                <table class="crypto-table" id="most-popular">
-                    <thead>
-                        <tr>
-                            <th>Asset</th>
-                            <th>Buy</th>
-                            <th>Price Change</th>
-                            <th>Volume</th>
-                            <th>Market Cap</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Le righe saranno aggiunte dinamicamente qui -->
-                    </tbody>
-                </table>
-            </div>
 
             
 
@@ -124,23 +107,6 @@
             <div class="section">
                 <h2>Most Traded</h2>
                 <table class="crypto-table" id="most-traded">
-                    <thead>
-                        <tr>
-                            <th>Asset</th>
-                            <th>Buy</th>
-                            <th>Price Change</th>
-                            <th>Volume</th>
-                            <th>Market Cap</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Rows will be added here dynamically -->
-                    </tbody>
-                </table>
-            </div>
-            <div class="section">
-                <h2>Meme Coins</h2>
-                <table class="crypto-table" id="meme-coins">
                     <thead>
                         <tr>
                             <th>Asset</th>
