@@ -124,14 +124,10 @@ async function updateAllTables() {
         const [binanceData, coingeckoData] = await Promise.all([fetchCryptoPrices(), fetchCryptoImages()]);
         const { gainers, losers } = getTopGainersAndLosers(binanceData);
         const mostTraded = getMostTraded(binanceData);
-        const memeCoins = getMemeCoins(binanceData);
-        const mostPopular = binanceData.filter(crypto => popularCryptos.includes(crypto.symbol));
 
         updateTable(gainers, coingeckoData, 'top-gainers');
         updateTable(losers, coingeckoData, 'top-losers');
         updateTable(mostTraded, coingeckoData, 'most-traded');
-        updateTable(memeCoins, coingeckoData, 'meme-coins');
-        updateTable(mostPopular, coingeckoData, 'most-popular');
 
         updateAllCryptoBoxes(); // Ensure crypto boxes are updated immediately
     } catch (error) {
