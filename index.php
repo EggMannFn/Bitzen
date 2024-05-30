@@ -38,12 +38,11 @@
                 </form>
         </div>
 
-        <div class="crypto-info">
+        <!-- <div class="crypto-info">
             <div class="popular">
             <h2>Popolare</h2>
                 <table class="crypto-table" id="most-popular">
                     <tbody>
-                        <!-- Le righe saranno aggiunte dinamicamente qui -->
                     </tbody>
                 </table>
             </div>
@@ -52,11 +51,10 @@
                 <h2>Nuovo listing</h2>
                 <table class="crypto-table" id="new-listing">
                     <tbody>
-                        <!-- Le righe saranno aggiunte dinamicamente qui -->
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> -->
     </main>
 
     <script src="scriptLandingPage.js"></script>
