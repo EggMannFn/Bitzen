@@ -11,6 +11,8 @@
 </head>
 <body>
     <?php
+
+    session_start();
 if(!isset($_SESSION["login"]) || $_SESSION["login"] != true) {
     header("Location: ./login/login.php");
     exit;
