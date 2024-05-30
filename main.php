@@ -22,7 +22,7 @@
     </div>
     <div class="bottom-links">
         <a href="#"><img src="side-icons/settings.png" alt="Settings"> Settings</a>
-        <a href="./login/logout.php"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
+        <a href="logout.php"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
     </div>
 </div>
 
