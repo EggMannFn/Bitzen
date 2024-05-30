@@ -1,4 +1,18 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Platform UI</title>
+    <link rel="stylesheet" href="operation.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Immagine del grafico di mercato ottenuta dalla pagina precedente -->
+        <img src="logo.png" alt="Market Chart" class="market-chart">
+
+        <div class="form-container">
+            <?php
 require_once("processing/config.php");
 
 session_start();
@@ -94,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO transazione (id_transazione, id_wallet, moneta, quantita, tipologia, prezzo, timestamp) VALUES (null, $id_wallet, '{$selectedCoin}USDT', $quantity, 'buy', $coinPrice, CURRENT_TIMESTAMP)";
 
         if ($connessione->query($sql) == TRUE) {
-            header("Location: wallet.php");
+            header("Location: operation.php");
             exit;
         } 
         else{
@@ -121,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO transazione (id_transazione, id_wallet, moneta, quantita, tipologia, prezzo, timestamp) VALUES (null, $id_wallet, '{$selectedCoin}USDT', $quantity, 'sell', $coinPrice, CURRENT_TIMESTAMP)";
 
         if ($connessione->query($sql) == TRUE) {
-            header("Location: wallet.php");
+            header("Location: operation.php");
             exit;
         }
         else{
@@ -129,34 +143,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-
 echo "";
 echo "<p>nel wallet hai: $currentBalance$ </p>";
 echo "<p>Hai $currentCoin {$selectedCoin}</p>";
-?>
-<h2>Acquista</h2>
-<form method="post" action="">
-    <label for="coin">Seleziona la moneta:</label><br>
-    <select name="coin" id="coin" onchange="this.form.submit()">
-        <?php foreach ($coins as $coin) : ?>
-            <option value="<?php echo $coin; ?>" <?php echo $coin == $selectedCoin ? 'selected' : ''; ?>><?php echo $coin; ?></option>
-        <?php endforeach; ?>
-    </select><br>
-    <label for="quantity">Quantità da comprare:</label><br>
-    <input type="number" id="quantity" name="quantity" min="0.0001" step="0.0001" required><br>
-    <input type="submit" name="buy" value="Compra">
-</form>
 
-<h2>Vendi</h2>
+            // Form per comprare e vendere criptovalute
+            ?>
+            <form method="post" action="">
+                <label for="coin">Seleziona la moneta:</label><br>
+                <select name="coin" id="coin" onchange="this.form.submit()">
+                    <?php foreach ($coins as $coin) : ?>
+                        <option value="<?php echo $coin; ?>" <?php echo $coin == $selectedCoin ? 'selected' : ''; ?>><?php echo $coin; ?></option>
+                    <?php endforeach; ?>
+                </select><br>
+                <label for="quantity">Quantità:</label><br>
+                <input type="number" id="quantity" name="quantity" min="0.0001" step="0.0001" required class="selectBox"><br>
+                <div class="inputs">
+                    <input type="submit" name="buy" value="Compra">
+                        <input type="submit" name="sell" value="Vendi" class="sell-button" id="sell">
 
-<form method="post" action="">
-    <label for="coin">Seleziona la moneta:</label><br>
-    <select name="coin" id="coin" onchange="this.form.submit()">
-        <?php foreach ($coins as $coin) : ?>
-            <option value="<?php echo $coin; ?>" <?php echo $coin == $selectedCoin ? 'selected' : ''; ?>><?php echo $coin; ?></option>
-        <?php endforeach; ?>
-    </select><br>
-    <label for="quantity">Quantità da vendere:</label><br>
-    <input type="number" id="quantity" name="quantity" min="0.0001" step="0.0001" required><br>
-    <input type="submit" name="sell" value="Vendi">
-</form>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
