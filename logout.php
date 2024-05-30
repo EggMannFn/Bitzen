@@ -2,13 +2,11 @@
 <?php
 session_start();
 
-    session_destroy();
+session_destroy();
 
-    $cookie_expiry = time()-1;
+setcookie("email", "", time() - 3600, "/");
+setcookie("password", "", time() - 3600, "/");
 
-    setcookie("email", $email, $cookie_expiry);
-    setcookie("password", $password, $cookie_expiry);
-
-    header("Refresh:0;url=./login/login.php");
-    exit;
+header("Location: ./login/login.php");
+exit;
 ?>
