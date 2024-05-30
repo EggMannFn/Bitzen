@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO transazione (id_transazione, id_wallet, moneta, quantita, tipologia, prezzo, timestamp) VALUES (null, $id_wallet, '{$selectedCoin}USDT', $quantity, 'buy', $coinPrice, CURRENT_TIMESTAMP)";
 
         if ($connessione->query($sql) == TRUE) {
-            header("Location: operation.php");
+            header("Location: wallet.php");
             exit;
         } 
         else{
@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO transazione (id_transazione, id_wallet, moneta, quantita, tipologia, prezzo, timestamp) VALUES (null, $id_wallet, '{$selectedCoin}USDT', $quantity, 'sell', $coinPrice, CURRENT_TIMESTAMP)";
 
         if ($connessione->query($sql) == TRUE) {
-            header("Location: operation.php");
+            header("Location: wallet.php");
             exit;
         }
         else{
