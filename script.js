@@ -204,3 +204,82 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error('Error fetching data:', error));
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const tables = document.querySelectorAll('.crypto-table');
+    tables.forEach(table => {
+        table.addEventListener('click', (event) => {
+            let row = event.target.closest('tr');
+            if (row && row.parentNode.nodeName === 'TBODY') {
+                const imgElement = row.querySelector('img'); // Ottiene l'elemento <img>
+                const asset = imgElement.alt.trim();
+                const price = row.cells[1].textContent.trim();
+                const imageUrl = imgElement.src.trim();
+
+                // Reindirizza a operation.php con i parametri dell'URL
+                window.location.href = `operation.php?asset=${encodeURIComponent(asset)}&price=${encodeURIComponent(price)}&imageUrl=${encodeURIComponent(imageUrl)}`;
+            }
+        });
+    });
+});
+
+async function fetchChartData(currency) {
+    const response = await fetch(`https://api.example.com/data/${currency}`);
+    const data = await response.json();
+    return data.map(point => ({
+        x: new Date(point.timestamp),
+        y: point.price
+    }));
+}
+
+function updateChart(data, currencyLabel) {
+    const ctx = document.getElementById('btcChart').getContext('2d');
+    if (window.chart) {
+        window.chart.data.datasets[0].data = data;
+        window.chart.data.datasets[0].label = `${currencyLabel}/USD`;
+        window.chart.update();
+    } else {
+        window.chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: `${currencyLabel}/USD`,
+                    data: data,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: false,
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Price (USD)'
+                        }
+                    }
+                }
+            }
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cryptoBoxes = document.querySelectorAll('.crypto-box');
+    cryptoBoxes.forEach(box => {
+        box.addEventListener('click', async () => {
+            const currency = box.id; // L'ID del box è usato per identificare la valuta
+            const data = await fetchChartData(currency);
+            updateChart(data, currency.toUpperCase());
+        });
+    });
+});
