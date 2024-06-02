@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trading Platform UI</title>
-    <link rel="stylesheet" href="operation.css">
+    <link rel="stylesheet" href="wallet.css">
 </head>
 <body>
     <div class="container">
