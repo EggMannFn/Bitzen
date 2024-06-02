@@ -47,13 +47,22 @@ require_once("processing/config.php");
                     </div>
                 </div>
 
+                <div class="rightFirst">
+                    <div class="exchange-container">
+                        <div class="exchange-box">
+                        <h1>EXCHANGE</h1>
+                        <input type="text" placeholder="Input 1">
+                        <input type="text" placeholder="Input 2">
+                        <button>Exchange</button>
+                        </div>
 
-                <div class="exchange-container">
-                    <div class="exchange-box">
-                    <h1>EXCHANGE</h1>
-                    <input type="text" placeholder="Input 1">
-                    <input type="text" placeholder="Input 2">
-                    <button>Exchange</button>
+                    <div class="sectionTrans">
+                        <h2>Recent Transactions</h2>
+                            <table class="transactions-table" id="recentTransactions">
+    
+                            </table>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -95,12 +104,7 @@ require_once("processing/config.php");
         </table>
     </div>
 
-    <div class="sectionTrans">
-        <h2>Recent Transactions</h2>
-            <table class="transactions-table" id="recentTransactions">
-    
-            </table>
-    </div>
+
     </div>
         <div class="section">
                 <h2>Most Traded</h2>
