@@ -20,26 +20,26 @@ $rows = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="transactions.css">
-    <title>BITZEN | Trasactions </title>
+    <title>BITZEN | Transactions </title>
 </head>
 <body>
 
-    <div class="dashboard">
-        
-        <div class="sidebar">
-            <h2>Dashboard</h2>
-            <div class="link-group">
-                <a href="main.php"><img src="side-icons/dashboard.png" alt="Dashboard"> Dashboard</a>
-                <a href="wallet.php"><img src="side-icons/wallet.png" alt="Wallet"> Wallet</a>
-                <!--<a href="#"><img src="side-icons/trading.png" alt="Trading"> Trading</a>-->
-                <!--<a href="#"><img src="side-icons/security.png" alt="Security"> Security</a>-->
-                <a href="transactions.php"><img src="side-icons/transactions.png" alt="Transactions"> Transactions</a>
-            </div>
-            <div class="bottom-links">
-                <a href="#"><img src="side-icons/settings.png" alt="Settings"> Settings</a>
-                <a href="logout.php"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
-            </div>
+<div class="dashboard">
+    
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <div class="link-group">
+            <a href="main.php"><img src="side-icons/dashboard.png" alt="Dashboard"> Dashboard</a>
+            <a href="wallet.php"><img src="side-icons/wallet.png" alt="Wallet"> Wallet</a>
+            <!--<a href="#"><img src="side-icons/trading.png" alt="Trading"> Trading</a>-->
+            <!--<a href="#"><img src="side-icons/security.png" alt="Security"> Security</a>-->
+            <a href="transactions.php"><img src="side-icons/transactions.png" alt="Transactions"> Transactions</a>
         </div>
+        <div class="bottom-links">
+            <a href="#"><img src="side-icons/settings.png" alt="Settings"> Settings</a>
+            <a href="logout.php"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
+        </div>
+    </div>
 
     <div class="div-table">
         <h1>Transactions</h1>
@@ -57,7 +57,11 @@ $rows = $stmt->fetchAll();
                     echo '<tr>';
                     echo '<td>' . $row['moneta'] . '</td>';
                     echo '<td>' . $row['quantita'] . '</td>';
-                    echo '<td>' . $row['tipologia'] . '</td>';
+                    if($row['tipologia'] == "buy"){
+                        echo '<td style="color: green;">' . $row['tipologia'] . '</td>';
+                    } else {
+                        echo '<td style="color: red;">' . $row['tipologia'] . '</td>';
+                    }
                     echo '<td>' . $row['prezzo'] . '</td>';
                     echo '<td>' . $row['timestamp'] . '</td>';
                     echo '</tr>';
@@ -66,7 +70,7 @@ $rows = $stmt->fetchAll();
             </table>
         </div>
     </div>
-    </div>
 </div>
+
 </body>
 </html>

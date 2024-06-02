@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cryptocurrency Dashboard</title>
+    <title>BITZEN | Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -23,8 +23,6 @@ require_once("processing/config.php");
     <div class="link-group">
         <a href="main.php"><img src="side-icons/dashboard.png" alt="Dashboard"> Dashboard</a>
         <a href="wallet.php"><img src="side-icons/wallet.png" alt="Wallet"> Wallet</a>
-        <!--<a href="#"><img src="side-icons/trading.png" alt="Trading"> Trading</a>-->
-        <!--<a href="#"><img src="side-icons/security.png" alt="Security"> Security</a>-->
         <a href="transactions.php"><img src="side-icons/transactions.png" alt="Transactions"> Transactions</a>
     </div>
     <div class="bottom-links">
