@@ -111,6 +111,7 @@ body {
     width: 100%;
     height: auto;
     margin: 0;
+    box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.2);
 }
 
 .exchange-box {
