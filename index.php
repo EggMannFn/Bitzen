@@ -37,24 +37,6 @@
                     <input type="submit" value="Inizia ora" class="btn_iniziaOra">
                 </form>
         </div>
-
-        <!-- <div class="crypto-info">
-            <div class="popular">
-            <h2>Popolare</h2>
-                <table class="crypto-table" id="most-popular">
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="new-listing">
-                <h2>Nuovo listing</h2>
-                <table class="crypto-table" id="new-listing">
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div> -->
     </main>
 
     <script src="scriptLandingPage.js"></script>
