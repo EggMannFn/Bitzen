@@ -22,7 +22,6 @@
                 <a href="logout.php"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
             </div>
         </div>
-        
     <div class="container">
         <!-- Immagine del grafico di mercato ottenuta dalla pagina precedente -->
         <img src="logo.png" alt="Market Chart" class="market-chart">
