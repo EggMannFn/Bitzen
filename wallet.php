@@ -12,7 +12,7 @@
         <img src="logo.png" alt="Market Chart" class="market-chart">
 
         <div class="form-container">
-            <?php
+<?php
 require_once("processing/config.php");
 
 session_start();
@@ -160,9 +160,7 @@ echo "<p>Hai $currentCoin {$selectedCoin}</p>";
                 <input type="number" id="quantity" name="quantity" min="0.0001" step="0.0001" required class="selectBox"><br>
                 <div class="inputs">
                     <input type="submit" name="buy" value="Compra">
-                        <input type="submit" name="sell" value="Vendi" class="sell-button" id="sell">
-
-
+                    <input type="submit" name="sell" value="Vendi" class="sell-button" id="sell">
                 </div>
             </form>
         </div>
