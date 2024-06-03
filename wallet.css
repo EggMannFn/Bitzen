@@ -99,6 +99,7 @@ body, html {
 .dashboard {
     display: flex;
     height: 100vh;
+    
 }
 
 .sidebar {

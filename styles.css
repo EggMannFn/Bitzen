@@ -116,7 +116,7 @@ body {
 
 .exchange-box {
     background-color: rgba(32, 39, 49, 1);
-    border-radius: 35px;
+    border-radius: 10px;
     padding: 20px;
     width: 100%;
     display: flex;

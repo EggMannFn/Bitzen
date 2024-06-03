@@ -30,7 +30,6 @@ require_once("processing/config.php");
         <a href="logout.php"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
     </div>
 </div>
-
         <div class="main">
             <h1>Cryptocurrency Dashboard</h1>
             <div class="first">
@@ -44,24 +43,7 @@ require_once("processing/config.php");
                         <canvas id="btcChart" width="400" height="200"></canvas>
                     </div>
                 </div>
-
-                <div class="rightFirst">
-                    <div class="exchange-container">
-                        <div class="exchange-box">
-                            
-                                                <div class="sectionTrans">
-                                                    <h2>Recent Transactions</h2>
-                                                        <table class="transactions-table" id="recentTransactions">
-                                
-                                                        </table>
-                                                </div>
-
-                        </div>
-                    
-                </div>
-            </div>
         </div>
-
 
 <div class="second">
     <div class="section">
@@ -118,8 +100,20 @@ require_once("processing/config.php");
                     </tbody>
                 </table>
             </div>
+            <div class="rightFirst">
+                    <div class="exchange-container">
+                        <div class="exchange-box">
+                            <div class="sectionTrans">
+                                <h2>Recent Transactions</h2>
+                                <table class="transactions-table" id="recentTransactions">
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
