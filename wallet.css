@@ -95,7 +95,7 @@ body, html {
 
 }
 
-
+/* -- DASHBOARD -- */
 .dashboard {
     display: flex;
     height: 100vh;
@@ -154,4 +154,3 @@ body, html {
 opacity: 50%;
 transition: 0.5s;
 }
-
