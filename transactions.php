@@ -41,8 +41,9 @@ $rows = $stmt->fetchAll();
         </div>
     </div>
 
+    <div class="pagina-transactions">
+    <h1>Transactions</h1>
     <div class="div-table">
-        <h1>Transactions</h1>
         <div>
             <table class="transactions-table">
                 <tr>
@@ -70,6 +71,8 @@ $rows = $stmt->fetchAll();
             </table>
         </div>
     </div>
+    </div>
+
 </div>
 
 </body>
