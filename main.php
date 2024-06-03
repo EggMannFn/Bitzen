@@ -101,16 +101,44 @@ require_once("processing/config.php");
                 </table>
             </div>
             <div class="rightFirst">
-                    <div class="exchange-container">
-                        <div class="exchange-box">
-                            <div class="sectionTrans">
-                                <h2>Recent Transactions</h2>
-                                <table class="transactions-table" id="recentTransactions">
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="exchange-container">
+        <div class="exchange-box">
+            <div class="sectionTrans">
+                <h2>Recent Transactions</h2>
+                <?php
+                $wallet = $_SESSION["wallet"]["id_wallet"];
+                $sql = "SELECT * FROM transazione where id_wallet = $wallet ORDER BY timestamp DESC LIMIT 5";
+                $stmt = $connessione->query($sql);
+                $rows = $stmt->fetchAll();
+                ?>
+                <table class="transactions-table" id="recentTransactions">
+                    <tr>
+                        <th>Moneta</th>
+                        <th>Quantità</th>
+                        <th>Azione</th>
+                        <th>Prezzo</th>
+                        <th>Timestamp</th>
+                    </tr>
+                    <?php
+                    foreach ($rows as $row) {
+                        echo '<tr>';
+                        echo '<td>' . $row['moneta'] . '</td>';
+                        echo '<td>' . $row['quantita'] . '</td>';
+                        if($row['tipologia'] == "buy"){
+                            echo '<td style="color: green;">' . $row['tipologia'] . '</td>';
+                        } else {
+                            echo '<td style="color: red;">' . $row['tipologia'] . '</td>';
+                        }
+                        echo '<td>' . $row['prezzo'] . '</td>';
+                        echo '<td>' . $row['timestamp'] . '</td>';
+                        echo '</tr>';
+                    }
+                    ?>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
     </div>
     
