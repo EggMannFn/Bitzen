@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitzen - Accumula le tue crypto</title>
-    <link rel="stylesheet" href="landingPage.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
