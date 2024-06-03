@@ -1,32 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BITZEN | Wallet</title>
-    <link rel="stylesheet" href="wallet.css">
-</head>
-<body>
-<div class="dashboard">
-        <div class="sidebar">
-            <h2>Dashboard</h2>
-            <div class="link-group">
-                <a href="main.php"><img src="side-icons/dashboard.png" alt="Dashboard"> Dashboard</a>
-                <a href="wallet.php"><img src="side-icons/wallet.png" alt="Wallet"> Wallet</a>
-                <!--<a href="#"><img src="side-icons/trading.png" alt="Trading"> Trading</a>-->
-                <!--<a href="#"><img src="side-icons/security.png" alt="Security"> Security</a>-->
-                <a href="transactions.php"><img src="side-icons/transactions.png" alt="Transactions"> Transactions</a>
-            </div>
-            <div class="bottom-links">
-                <a href="#"><img src="side-icons/settings.png" alt="Settings"> Settings</a>
-                <a href="logout.php"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
-            </div>
-        </div>
-    <div class="container">
-        <!-- Immagine del grafico di mercato ottenuta dalla pagina precedente -->
-        <img src="logo.png" alt="Market Chart" class="market-chart">
-
-        <div class="form-container">
 <?php
 require_once("processing/config.php");
 
@@ -73,7 +44,7 @@ $data = json_decode($response, true);
 $price = $data['price'];
 if (isset($price)) {
     $coinPrice = $data['price'];
-    echo "Prezzo di {$selectedCoin}: " . round($coinPrice, 2) . " USD";
+    // echo "Prezzo di {$selectedCoin}: " .      . " USD";
 
 }
 // Calcola il costo totale di acquisto di Coin
@@ -100,7 +71,6 @@ $currentValue = $currentCoin * $coinPrice;
 // Calcola il guadagno o la perdita
 $gainLoss = $currentValue - ($totalPurchaseCost - $totalSales);
 
-echo "<br>Il tuo storico di guadagno e perdita per {$selectedCoin} è: ".round($gainLoss,2) ."USD";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['buy'])) {
@@ -160,27 +130,146 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 echo "";
-echo "<p>nel wallet hai: $currentBalance$ </p>";
-echo "<p>Hai $currentCoin {$selectedCoin}</p>";
+// echo "<p>Hai $currentCoin {$selectedCoin}</p>";
 
-            // Form per comprare e vendere criptovalute
-            ?>
-            <form method="post" action="">
-                <label for="coin">Seleziona la moneta:</label><br>
-                <select name="coin" id="coin" onchange="this.form.submit()">
-                    <?php foreach ($coins as $coin) : ?>
-                        <option value="<?php echo $coin; ?>" <?php echo $coin == $selectedCoin ? 'selected' : ''; ?>><?php echo $coin; ?></option>
-                    <?php endforeach; ?>
-                </select><br>
-                <label for="quantity">Quantità:</label><br>
-                <input type="number" id="quantity" name="quantity" min="0.0001" step="0.0001" required class="selectBox"><br>
-                <div class="inputs">
-                    <input type="submit" name="buy" value="Compra">
-                    <input type="submit" name="sell" value="Vendi" class="sell-button" id="sell">
-                </div>
-            </form>
-        </div>
+            
+            
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BITZEN | Dashboard</title>
+    <link rel="stylesheet" href="wallet.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+    <div class="dashboard">
+<div class="sidebar">
+    <h2>Dashboard</h2>
+    <div class="link-group">
+        <a href="main.php"><img src="side-icons/dashboard.png" alt="Dashboard"> Dashboard</a>
+        <a href="wallet.php"><img src="side-icons/wallet.png" alt="Wallet"> Wallet</a>
+        <a href="transactions.php"><img src="side-icons/transactions.png" alt="Transactions"> Transactions</a>
     </div>
-    <script src="script.js"></script>
+    <div class="bottom-links">
+        <a href="#"><img src="side-icons/settings.png" alt="Settings"> Settings</a>
+        <a href="logout.php"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
+    </div>
+</div>
+        <div class="main">
+
+<div class="second">
+    
+    <div class="section-balance">
+        <?php echo " <h1>$ " . number_format($currentBalance, 2, '.', ' ') . " </h1>"; ?>
+        <canvas id="myChartBalance"></canvas>
+    </div>
+
+    <div class="section-buysell">
+        <form method="post" action="">
+            <select name="coin" id="coin" onchange="this.form.submit()">
+                <?php foreach ($coins as $coin) : ?>
+                    <option value="<?php echo $coin; ?>" <?php echo $coin == $selectedCoin ? 'selected' : ''; ?>><?php echo $coin; ?></option>
+                <?php endforeach; ?>
+            </select><br>
+            <label for="quantity">Quantità:</label><br>
+            <input type="number" id="quantity" name="quantity" min="0.0001" step="0.0001" required class="selectBox"><br>
+            <div class="inputs">
+                <input type="submit" name="buy" value="Compra">
+                <input type="submit" name="sell" value="Vendi" class="sell-button" id="sell">
+            </div>
+        </form>
+    </div>
+
+
+    </div>
+        <div class="section">
+                <table class="trade-table" id="most-traded">
+                <?php
+
+// Add a new header for the gain/loss in the table
+echo "
+<thead>
+    <tr>
+        <th>Moneta</th>
+        <th>Quantità</th>
+        <th>Prezzo</th>
+        <th>Storico di guadagno e perdita</th> <!-- New column -->
+    </tr>
+</thead>
+<tbody>";
+
+// Fetch the data for each coin
+foreach ($coins as $coin) {
+    $coinQuantity = $coinQuantities[array_search($coin, $coins)];
+
+    // Fetch the current quantity of the coin in the wallet
+    $sql = "SELECT {$coinQuantity} FROM wallet WHERE id_wallet = $id_wallet";
+    $result = $connessione->query($sql);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    if ($row === false) {
+        die("Error: Wallet non trovato :(");
+    }
+    $currentCoinQuantity = $row[$coinQuantity];
+
+    // Fetch the current price of the coin
+    $apiUrl = "https://api.binance.com/api/v3/ticker/price?symbol={$coin}USDT";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $apiUrl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    if ($response === false) {
+        $error = curl_error($ch);
+        curl_close($ch);
+        die("cURL Error: $error");
+    }    
+    curl_close($ch);
+    $data = json_decode($response, true);
+    $coinPrice = $data['price'];
+
+    // Calculate the total cost of buying the coin
+    $sql = "SELECT SUM(quantita * prezzo) AS totalCost FROM transazione WHERE id_wallet = $id_wallet AND tipologia = 'buy' AND moneta = '{$coin}USDT'";
+    $result = $connessione->query($sql);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    if ($row === false) {
+        die("Error: Non riesco a calcolare il costo totale di acquisto di {$coin}.");
+    }
+    $totalPurchaseCost = $row['totalCost'];
+
+    // Calculate the total sales of the coin
+    $sql = "SELECT SUM(quantita * prezzo) AS totalSales FROM transazione WHERE id_wallet = $id_wallet AND tipologia = 'sell' AND moneta = '{$coin}USDT'";
+    $result = $connessione->query($sql);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    if ($row === false) {
+        die("Error: Non riesco a calcolare il totale delle vendite di {$coin}.");
+    }
+    $totalSales = $row['totalSales'];
+
+    // Calculate the current value of the coin in the wallet
+    $currentValue = $currentCoinQuantity * $coinPrice;
+
+    // Calculate the gain or loss
+    $gainLoss = $currentValue - ($totalPurchaseCost - $totalSales);
+
+    // Print the coin information in the table
+    echo "<tr>";
+    echo "<td>{$coin}</td>";
+    echo "<td>{$currentCoinQuantity}</td>";
+    echo "<td>".round($coinPrice, 2)."</td>"; 
+    echo "<td>".round($gainLoss,2) ." USD</td>"; // New column
+    echo "</tr>";
+}
+echo "</tbody>";
+?>
+                </table>
+            </div>
+    </div>
+    
+    <script src="wallet.js"></script>
 </body>
 </html>
