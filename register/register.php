@@ -30,7 +30,7 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
     <div class="container">
         <nav>
             <!-- manca il logo -->
-            <div><a class="logo" href="../landingPage.php">BITZEN</a></div>
+            <div><a class="logo" href="../index.php">BITZEN</a></div>
             <ul>
                 <li class="btn_navbar"><a href="#">Compra Crypto</a></li>
                 <li class="btn_navbar"><a href="#">Mercati</a></li>
