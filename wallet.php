@@ -73,7 +73,8 @@ $data = json_decode($response, true);
 $price = $data['price'];
 if (isset($price)) {
     $coinPrice = $data['price'];
-    echo "Prezzo di {$selectedCoin}: {$coinPrice} USD";
+    echo "Prezzo di {$selectedCoin}: " . round($coinPrice, 2) . " USD";
+
 }
 // Calcola il costo totale di acquisto di Coin
 $sql = "SELECT SUM(quantita * prezzo) AS totalCost FROM transazione WHERE id_wallet = $id_wallet AND tipologia = 'buy' AND moneta = '{$selectedCoin}USDT'";
