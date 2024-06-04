@@ -5,9 +5,37 @@ error_reporting(E_ALL);
 
 require_once ("../processing/config.php");
 
-if(isset($_POST["email"])){ //?
+if(isset($_POST["email"], $_POST["password"], $_POST["confirm_password"], $_POST["data_nascita"], $_POST["telefono"])){
 
-    $sql = "SELECT email FROM utenti where email = :email"; //controllo se nome utente esistono già nel database
+    // Controllo se le password corrispondono
+    if ($_POST["password"] !== $_POST["confirm_password"]) {
+        header("refresh:0; url=register.php?passwordMismatch=true");
+        exit;
+    }
+
+    // Controllo se l'utente è maggiorenne
+    $dateOfBirth = new DateTime($_POST["data_nascita"]);
+    $today = new DateTime();
+    $diff = $today->diff($dateOfBirth);
+    if ($diff->y < 18) {
+        header("refresh:0; url=register.php?notAdult=true");
+        exit;
+    }
+
+    // Controllo se il telefono ha 10 cifre
+    if (strlen($_POST["telefono"]) !== 10) {
+        header("refresh:0; url=register.php?invalidPhone=true");
+        exit;
+    }
+
+    // Controllo se la mail è valida
+    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        header("refresh:0; url=register.php?invalidEmail=true");
+        exit;
+    }
+
+    // Controllo se l'email esiste già nel database
+    $sql = "SELECT email FROM utenti where email = :email";
     $stmt = $connessione->prepare($sql);
     $stmt->execute([
         ":email" => $_POST["email"]

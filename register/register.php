@@ -49,7 +49,7 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
     <main>
         <h1>Crea ora il tuo account su Bitzen!</h1>
         <div class="form-container">
-            <form action="scriptRegister.php" method="post">
+            <form action="scriptRegister.php" method="post" id="registrationForm">
 
 
             <div class="div-allinea">
@@ -100,5 +100,6 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
             </form>
         </div>
     </main>
+    <script src="register.js" defer></script>
 </body>
 </html>
