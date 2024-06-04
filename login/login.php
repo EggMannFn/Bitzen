@@ -22,9 +22,10 @@
             </ul>
         </nav>
         <div class="auth-buttons">
-            <a href="../login/login.php" class="login">Accedi</a>
-            <a href="../register/register.php" class="register">Registrati</a>
+            <a href="../login/login.php" class="button-nav login">Accedi</a>
+            <a href="../register/register.php" class="button-nav register">Registrati</a>
         </div>
+        
     </div>
 </header>
     <?php
