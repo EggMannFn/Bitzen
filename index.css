@@ -120,3 +120,8 @@ body {
 .negative {
     color: #f44336;
 }
+
+video#videoBg{
+    height: 100%;
+    width: 100%;
+}

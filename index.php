@@ -12,7 +12,6 @@
 <header>
     <div class="container">
         <nav>
-            <!-- manca il logo -->
             <div><a class="logo" href="./index.php">BITZEN</a></div>
             <ul>
                 <li class="btn_navbar"><a href="#">Compra Crypto</a></li>
@@ -28,18 +27,19 @@
         </div>
     </div>
 </header>
-<video autoplay muted loop id="myVideo">
+
+<video autoplay muted loop id="videoBg">
   <source src="bg_video.mp4" type="video/mp4">
 </video>
 
-        <div class="hero-section">
-            <h1>Accumula le tue crypto in modo rapido e sicuro</h1>
-            <p>Il metodo più veloce per convertire i tuoi soldi in criptovalute e conservare tutto in un unico posto sicuro.</p>
-                <form action="./register/register.php" method="POST">
-                    <input type="email" name="email" class="inp_email" placeholder="Indirizzo e-mail" required>
-                    <input type="submit" value="Inizia ora" class="btn_iniziaOra">
-                </form>
-        </div>
+<div class="hero-section">
+    <h1>Accumula le tue crypto in modo rapido e sicuro</h1>
+    <p>Il metodo più veloce per convertire i tuoi soldi in criptovalute e conservare tutto in un unico posto sicuro.</p>
+        <form action="./register/register.php" method="POST">
+            <input type="email" name="email" class="inp_email" placeholder="Indirizzo e-mail" required>
+            <input type="submit" value="Inizia ora" class="btn_iniziaOra">
+        </form>
+</div>
 
     <script src="index.js"></script>
 </body>
