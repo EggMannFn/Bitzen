@@ -14,10 +14,10 @@ else if(isset($_POST["email"]) && isset($_POST["password"])){
 
 if(isset($email) && isset($password))
 {
-    $sql = "SELECT id_utente, email, password FROM utenti WHERE email = :email";
+    $sql = "SELECT id_utente, email, nome, cognome, password FROM utenti WHERE email = :email";
     $stmt = $connessione->prepare($sql);
     $stmt->execute([
-        ":email"=> $email
+        ":email"=> $email,
     ]);
     $risultato = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -31,6 +31,8 @@ if(isset($email) && isset($password))
             session_start();
             $_SESSION["login"] = true;
             $_SESSION["email"] = $email;
+            $_SESSION["nome"] = $risultato[0]["nome"];
+            $_SESSION["cognome"] = $risultato[0]["cognome"];
 
             // Fetch wallet data
             $sql = "SELECT id_wallet, id_utente, denaroDemo, qBTC, qBNB, qETH, qSOL, qXRP FROM wallet WHERE id_utente = :id_utente";

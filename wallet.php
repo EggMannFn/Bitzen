@@ -146,6 +146,7 @@ echo "";
     <link rel="stylesheet" href="wallet.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <link rel="icon" type="image/x-icon" href="logo.ico">
 </head>
 <body>
     <div class="dashboard">
@@ -162,9 +163,9 @@ echo "";
     </div>
 </div>
         <div class="main">
+        <h1>Benvenuto nel tuo wallet, <?php echo $_SESSION["nome"] ; ?> <?php echo $_SESSION["cognome"] ; ?>!</h1>
 
 <div class="second">
-    
     <div class="section-balance">
         <?php echo " <h1>$ " . number_format($currentBalance, 2, '.', ' ') . " </h1>"; ?>
         <canvas id="myChartBalance"></canvas>
@@ -260,7 +261,7 @@ foreach ($coins as $coin) {
     echo "<tr>";
     echo "<td>{$coin}</td>";
     echo "<td>{$currentCoinQuantity}</td>";
-    echo "<td>".round($coinPrice, 2)."</td>"; 
+    echo "<td>".round($coinPrice, 2)." $</td>"; 
     echo "<td>".round($gainLoss,2) ." USD</td>"; // New column
     echo "</tr>";
 }

@@ -21,6 +21,7 @@ $rows = $stmt->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="transactions.css">
     <title>BITZEN | Transactions </title>
+    <link rel="icon" type="image/x-icon" href="logo.ico">
 </head>
 <body>
 

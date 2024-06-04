@@ -21,9 +21,10 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrazione - Bitzen</title>
+    <title>BITZEN | Register</title>
     <link rel="stylesheet" href="register.css">
     <link rel="stylesheet" href="../navbar.css">
+    <link rel="icon" type="image/x-icon" href="../logo.ico">
 </head>
 <body>
 <header>
