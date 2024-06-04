@@ -125,9 +125,9 @@ require_once("processing/config.php");
                         echo '<td>' . $row['moneta'] . '</td>';
                         echo '<td>' . $row['quantita'] . '</td>';
                         if($row['tipologia'] == "buy"){
-                            echo '<td style="color: green;">' . $row['tipologia'] . '</td>';
+                            echo '<td style="color: rgb(0, 232, 182);">' . $row['tipologia'] . '</td>';
                         } else {
-                            echo '<td style="color: red;">' . $row['tipologia'] . '</td>';
+                            echo '<td style="color: rgb(208, 89, 89);">' . $row['tipologia'] . '</td>';
                         }
                         echo '<td>' . $row['prezzo'] . '</td>';
                         echo '<td>' . $row['timestamp'] . '</td>';

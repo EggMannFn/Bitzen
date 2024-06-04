@@ -121,3 +121,10 @@ input[type="submit"] {
 ::placeholder{
     color: #cacaca31;
 }
+
+
+.div-allinea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

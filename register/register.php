@@ -51,7 +51,8 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
             <form action="scriptRegister.php" method="post">
 
 
-                    <div class="form-group-line">
+            <div class="div-allinea">
+            <div class="form-group-line">
                         <label for="nome">Nome</label>
                         <input type="text" id="nome" name="nome" required placeholder="Andrea">
                     </div>
@@ -59,9 +60,11 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
                         <label for="cognome">Cognome</label>
                         <input type="text" id="cognome" name="cognome" required placeholder="Maffi">
                     </div>
+            </div>
 
-                
-                <div class="form-group-line">
+
+            <div class="div-allinea">
+            <div class="form-group-line">
                     <label for="data_nascita">Data di Nascita</label>
                     <input type="date" id="data_nascita" name="data_nascita" required>
                 </div>
@@ -69,6 +72,10 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
                     <label for="telefono">Telefono</label>
                     <input type="text" id="telefono" name="telefono" required placeholder="3518736524">
                 </div>
+
+            </div>
+                
+
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required placeholder="latuamail@dominio.it" value="<?php echo $email; ?>">
