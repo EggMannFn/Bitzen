@@ -27,8 +27,10 @@
         </div>
     </div>
 </header>
+<video autoplay muted loop id="myVideo">
+  <source src="bg_video.mp4" type="video/mp4">
+</video>
 
-    <main>
         <div class="hero-section">
             <h1>Accumula le tue crypto in modo rapido e sicuro</h1>
             <p>Il metodo più veloce per convertire i tuoi soldi in criptovalute e conservare tutto in un unico posto sicuro.</p>
@@ -37,7 +39,6 @@
                     <input type="submit" value="Inizia ora" class="btn_iniziaOra">
                 </form>
         </div>
-    </main>
 
     <script src="index.js"></script>
 </body>
