@@ -3,12 +3,12 @@ var ctx = document.getElementById('myChartBalance').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno'],
+        labels: ['01/01', '01/02', '01/03', '01/04', '01/05', '01/06'],
         datasets: [{
             label: 'Balance',
-            data: [1200, 1900, 3000, 5000, 2000, 3000],
+            data: [800000, 1000000, 650000, 1000000, 1000000, 1002000],
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
+            borderColor: 'rgba(9, 175, 143, 1)',
             borderWidth: 1
         }]
     },

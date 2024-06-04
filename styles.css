@@ -52,7 +52,8 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    margin: 0;
+    margin-left: 10rem;
+    margin-right: 10rem;
     padding-right: 30px;
     box-sizing: border-box;
     flex-grow: 1;
@@ -73,6 +74,7 @@ body {
 .crypto-box:hover {
     background-color: rgba(9, 175, 143, 1);
     transform: scale(1.03);
+    color: white;
 }
 
 .crypto-box img {

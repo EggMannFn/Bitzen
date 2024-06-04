@@ -47,10 +47,10 @@ $rows = $stmt->fetchAll();
         <div>
             <table class="transactions-table">
                 <tr>
-                    <th>Moneta</th>
-                    <th>Quantità</th>
-                    <th>Azione</th>
-                    <th>Prezzo</th>
+                    <th>Coin</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                    <th>Price</th>
                     <th>Timestamp</th>
                 </tr>
                 <?php

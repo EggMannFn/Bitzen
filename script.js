@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     datasets: [{
                         label: 'BTC/USD',
                         data: formattedData,
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderColor: 'rgba(9, 175, 143, 1)',
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         fill: false,
                     }]
