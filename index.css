@@ -10,6 +10,8 @@ body {
 
 body {
     position: relative;
+    margin: 0;
+    padding: 0;
 }
 
 #videoBg {
@@ -24,6 +26,7 @@ body {
     background-size: cover;
     overflow: hidden;
     filter: blur(5px);
+    object-fit: cover; /* Aggiungi questa linea */
 }
 
 .hero-section {
