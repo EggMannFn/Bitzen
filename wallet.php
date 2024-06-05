@@ -169,10 +169,26 @@ echo "";
         <?php echo " <h1>$ " . number_format($currentBalance, 2, '.', ' ') . " </h1>"; ?>
         <canvas id="myChartBalance"></canvas>
     </div>
-
+    <div class="section-img">
+    <?php
+        $coinsImg = array(
+            'BTC' => 'bitcoin',
+            'BNB' => 'binancecoin',
+            'ETH' => 'ethereum',
+            'SOL' => 'solana',
+            'XRP' => 'ripple'
+            // Add more coins as needed
+        );
+        $coin_id = $coinsImg[$selectedCoin];
+        $coin_data = file_get_contents('https://api.coingecko.com/api/v3/coins/' . $coin_id);
+        $coin_data = json_decode($coin_data, true);
+        $image_url = $coin_data['image']['large'];
+        echo '<img class="coin-image" src="' . $image_url . '" alt="' . $coin_id . '">';
+    ?>
+    </div>
     <div class="section-buysell">
         <form method="post" action="">
-            <select name="coin" id="coin" onchange="this.form.submit()">
+            <select name="coin" id="coinSelect" onchange="this.form.submit()">
                 <?php foreach ($coins as $coin) : ?>
                     <option value="<?php echo $coin; ?>" <?php echo $coin == $selectedCoin ? 'selected' : ''; ?>><?php echo $coin; ?></option>
                 <?php endforeach; ?>
@@ -180,11 +196,12 @@ echo "";
             <label for="quantity">Quantità:</label><br>
             <input type="number" id="quantity" name="quantity" min="0.0001" step="0.0001" required class="selectBox"><br>
             <div class="inputs">
-                <input type="submit" name="buy" value="Compra">
-                <input type="submit" name="sell" value="Vendi" class="sell-button" id="sell">
+                <input type="submit" name="buy" id="buyButton" class="buy-button" value="Compra">
+                <input type="submit" name="sell" class="sell-button" id="sellButton" value="Vendi">
             </div>
         </form>
     </div>
+    
 
 
     </div>

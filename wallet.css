@@ -6,173 +6,23 @@ html, body {
     padding: 0;
 }
 
-*, *:before, *:after {
-    box-sizing: border-box; 
-}
-
-.container {
-    max-width: 100%; 
-    overflow-x: hidden; 
-}
-
-.fixed-width-element {
-    max-width: 100%; 
-}
-
-
 body {
-    padding: 0;
-    margin: 0;
     background-color: rgb(26, 32, 37);
     color: #ffffff;
-    width: 100%;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
 }
 
-
-.first {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 20px;
+*, *:before, *:after {
+    box-sizing: border-box; 
 }
 
-.cryptoCanva {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.crypto-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin: 0;
-    padding-right: 30px;
-    box-sizing: border-box;
-    flex-grow: 1;
-}
-
-.crypto-box {
-    background-color: rgba(32, 39, 49, 1);
-    border-radius: 35px;
-    padding: 20px;
-    min-width: 360px;
-    height: 150px;
-    box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    transition: background-color 0.6s, transform 0.6s;
-}
-
-.crypto-box:hover {
-    background-color: rgba(9, 175, 143, 1);
-    transform: scale(1.03);
-}
-
-.crypto-box img {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px;
-    filter: drop-shadow(5px 5px 5px #222);
-}
-
-.crypto-box .crypto-info {
-    display: flex;
-    flex-direction: column;
-    padding-top: 30px;
-}
-
-.crypto-box .crypto-name {
-    font-size: 2em;
-    margin-left: 30px;
-    font-weight: bold;
-}
-
-.crypto-box .crypto-price {
-    font-size: 25px;
-    font-weight: bold;
-    margin-left: 100px;
-    color: rgba(99, 103, 107, 1);
-}
-
-.exchange-container {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    border-radius: 35px;
-    width: 100%;
-    height: auto;
-    margin: 0;
-    box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.2);
-}
-
-.exchange-box {
-    background-color: rgba(32, 39, 49, 1);
-    border-radius: 10px;
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
-}
-
-.exchange-box input {
-    background-color: rgba(36, 43, 53, 1);
-    padding: 25px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 5px;
-    width: 80%;
-}
-
-.exchange-box button {
-    width: 80%;
-    padding: 10px;
-    background-color: #09af8f;
-    border: none;
-    border-radius: 35px;
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-    transition: 0.5s;
-}
-
-.exchange-box button:hover {
-    background-color: #078f72;
-    transition: 0.5s;
-}
-
-.canvaChoose {
-    background-color: rgba(32, 39, 49, 1);
-    border-radius: 35px;
-    margin: 30px 0px 30px 0px;
-    width: 98%;
-    height: 100%;
-    box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.6s, transform 0.6s;
-    grid-column: span 3;
-}
-
-.canvaChoose canvas {
-    width: 100% !important; 
+canvas#myChartBalance {
+    width: 100%; 
     height: 100%; 
-    padding: 50px;
+    box-sizing: border-box;
 }
-
-
-
-
 
 .second {
     display: flex; 
@@ -186,17 +36,21 @@ body {
     padding: 20px;
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin-bottom: 40px;
+    margin-top: 2%;
 }
 
 .section-buysell {
     background-color: rgba(32, 39, 49, 1);
     border-radius: 10px;
     padding: 20px;
-    width: 100%;
+    width: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin-bottom: 40px;
-    height: 85%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
 }
 
 .section-balance {
@@ -205,50 +59,27 @@ body {
     padding: 20px;
     width: 35%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin-bottom: 40px;
-    height: 85%;
+    height: 100%;
 }
 
-
-.trade-table {
-    width: 100%;
-    border-collapse: collapse;
+.section-balance h1 {
+    margin-top: 0;
 }
-
-.trade-table th, .trade-table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.trade-table th {
-    background-color: #333;
-}
-
-.trade-table tbody tr:nth-child(even) {
-    background-color: #3a3a3a;
-}
-
-.trade-table tbody tr:hover {
-    background-color: #555;
-}
-
-.sectionTrans{
+.section-img{
     background-color: rgba(32, 39, 49, 1);
     border-radius: 10px;
     padding: 20px;
-    width: 100%;
-}
-.transactionsTable{
-    width: 100%;
-    border-collapse: collapse;
-}
-.transactionsTable th, .transactionsTable td{
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    height: 45%;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
+img.coin-image{
+    margin: auto;
+    display: block;
+    height: 100%;
+}
 
 
 
@@ -311,17 +142,6 @@ opacity: 50%;
 transition: 0.5s;
 }
 
-
-.table-row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.table-container {
-    flex: 1;
-    margin: 10px;
-}
-
 .main {
     flex: 1;
     display: flex;
@@ -331,7 +151,7 @@ transition: 0.5s;
 }
 
 .main h1 {
-    margin-bottom: 20px;
+    margin-bottom: 2%;
 }
 
 .main .section h2 {
@@ -341,6 +161,7 @@ transition: 0.5s;
 .trade-table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: auto;
 }
 
 .trade-table th, .trade-table td {
@@ -370,4 +191,74 @@ transition: 0.5s;
 .down {
     background-color: red;
     color: white;
+}
+
+#buyButton{
+    background-color: #09af8f;
+    border: none;
+    border-radius: 35px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: 0.5s;
+    padding: 10px;
+    width: 50%;
+}
+
+#buyButton:hover{
+    background-color: #078f72;
+    transition: 0.5s;
+}
+
+#sellButton{
+    background-color: #ff4d4d;
+    border: none;
+    border-radius: 35px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: 0.5s;
+    padding: 10px;
+    width: 50%;
+}
+
+#sellButton:hover{
+    background-color: #ff3333;
+    transition: 0.5s;
+}   
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+select#coinSelect {
+    background-color: rgb(163, 170, 179);
+    padding: 11px;
+    border: none;
+    border-radius: 5px;
+}
+
+input#quantity {
+    background-color: rgb(163, 170, 179);
+    padding: 11px;
+    border: none;
+    border-radius: 5px;
+}
+
+div.inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 1%;
+}
+
+.testImg{
+    margin-right: auto;
+    height: 10px;
+    width: 10px;
 }
