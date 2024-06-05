@@ -57,9 +57,9 @@ $rows = $stmt->fetchAll();
                     echo '<td>' . $row['moneta'] . '</td>';
                     echo '<td>' . $row['quantita'] . '</td>';
                     if($row['tipologia'] == "buy"){
-                        echo '<td style="color: green;">' . $row['tipologia'] . '</td>';
+                        echo '<td style="color: #078f72;">' . $row['tipologia'] . '</td>';
                     } else {
-                        echo '<td style="color: red;">' . $row['tipologia'] . '</td>';
+                        echo '<td style="color: #ff4d4d;">' . $row['tipologia'] . '</td>';
                     }
                     echo '<td>' . $row['prezzo'] . '</td>';
                     echo '<td>' . $row['timestamp'] . '</td>';
