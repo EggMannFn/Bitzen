@@ -52,8 +52,8 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    margin-left: 10rem;
-    margin-right: 10rem;
+    margin-left: 5%; /* Adjust as needed */
+    margin-right: 5%; /* Adjust as needed */
     padding-right: 30px;
     box-sizing: border-box;
     flex-grow: 1;
@@ -63,7 +63,7 @@ body {
     background-color: rgba(32, 39, 49, 1);
     border-radius: 35px;
     padding: 20px;
-    min-width: 360px;
+    min-width: 30%;
     height: 150px;
     box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -99,8 +99,9 @@ body {
 .crypto-box .crypto-price {
     font-size: 25px;
     font-weight: bold;
-    margin-left: 100px;
+    margin-left: 25%;
     color: rgba(99, 103, 107, 1);
+    width: 100%;
 }
 
 .exchange-container {
@@ -159,7 +160,7 @@ body {
     background-color: rgba(32, 39, 49, 1);
     border-radius: 35px;
     margin: 30px 0px 30px 0px;
-    width: 98%;
+    width: 100%;
     height: 100%;
     box-shadow: 1px 0px 20px 5px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -249,6 +250,7 @@ body {
 .dashboard {
     display: flex;
     height: 100vh;
+    overflow: hidden; /* Added */
 }
 
 .sidebar {
@@ -366,3 +368,14 @@ transition: 0.5s;
     color: white;
 }
 
+.btcChart {
+    width: 100%;
+    height: auto;
+}
+
+@media (min-width: 1200px) {
+    .btcChart {
+        max-width: 1200px;
+        height: auto;
+    }
+}
