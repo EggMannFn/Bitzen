@@ -192,7 +192,6 @@ echo "";
                 <table class="trade-table" id="most-traded">
                 <?php
 
-// Add a new header for the gain/loss in the table
 echo "
 <thead>
     <tr>
@@ -204,11 +203,9 @@ echo "
 </thead>
 <tbody>";
 
-// Fetch the data for each coin
 foreach ($coins as $coin) {
     $coinQuantity = $coinQuantities[array_search($coin, $coins)];
 
-    // Fetch the current quantity of the coin in the wallet
     $sql = "SELECT {$coinQuantity} FROM wallet WHERE id_wallet = $id_wallet";
     $result = $connessione->query($sql);
     $row = $result->fetch(PDO::FETCH_ASSOC);
@@ -217,7 +214,6 @@ foreach ($coins as $coin) {
     }
     $currentCoinQuantity = $row[$coinQuantity];
 
-    // Fetch the current price of the coin
     $apiUrl = "https://api.binance.com/api/v3/ticker/price?symbol={$coin}USDT";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $apiUrl);
@@ -232,7 +228,6 @@ foreach ($coins as $coin) {
     $data = json_decode($response, true);
     $coinPrice = $data['price'];
 
-    // Calculate the total cost of buying the coin
     $sql = "SELECT SUM(quantita * prezzo) AS totalCost FROM transazione WHERE id_wallet = $id_wallet AND tipologia = 'buy' AND moneta = '{$coin}USDT'";
     $result = $connessione->query($sql);
     $row = $result->fetch(PDO::FETCH_ASSOC);
@@ -241,7 +236,6 @@ foreach ($coins as $coin) {
     }
     $totalPurchaseCost = $row['totalCost'];
 
-    // Calculate the total sales of the coin
     $sql = "SELECT SUM(quantita * prezzo) AS totalSales FROM transazione WHERE id_wallet = $id_wallet AND tipologia = 'sell' AND moneta = '{$coin}USDT'";
     $result = $connessione->query($sql);
     $row = $result->fetch(PDO::FETCH_ASSOC);
@@ -250,18 +244,15 @@ foreach ($coins as $coin) {
     }
     $totalSales = $row['totalSales'];
 
-    // Calculate the current value of the coin in the wallet
     $currentValue = $currentCoinQuantity * $coinPrice;
 
-    // Calculate the gain or loss
     $gainLoss = $currentValue - ($totalPurchaseCost - $totalSales);
 
-    // Print the coin information in the table
     echo "<tr>";
     echo "<td>{$coin}</td>";
     echo "<td>{$currentCoinQuantity}</td>";
     echo "<td>".round($coinPrice, 2)." $</td>"; 
-    echo "<td>".round($gainLoss,2) ." USD</td>"; // New column
+    echo "<td>".round($gainLoss,2) ." USD</td>"; 
     echo "</tr>";
 }
 echo "</tbody>";

@@ -59,7 +59,7 @@ require_once("processing/config.php");
                 </tr>
             </thead>
             <tbody>
-                <!-- Rows will be added here dynamically -->
+                <!-- Aggiunta contentenuti -->
             </tbody>
         </table>
     </div>
@@ -76,7 +76,7 @@ require_once("processing/config.php");
                 </tr>
             </thead>
             <tbody>
-                <!-- Rows will be added here dynamically -->
+                <!-- Aggiunta contentenuti -->
             </tbody>
         </table>
     </div>
@@ -96,7 +96,7 @@ require_once("processing/config.php");
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Rows will be added here dynamically -->
+                        <!-- Aggiunta contentenuti -->
                     </tbody>
                 </table>
             </div>

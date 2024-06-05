@@ -58,7 +58,7 @@ body, html {
 }
 
 .sidebar a img {
-    filter: invert(100%); /* Ensures icons are visible on the dark background */
+    filter: invert(100%); 
 }
 
 .sidebar a:hover {

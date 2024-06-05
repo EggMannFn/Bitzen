@@ -129,13 +129,12 @@ async function updateAllTables() {
         updateTable(losers, coingeckoData, 'top-losers');
         updateTable(mostTraded, coingeckoData, 'most-traded');
 
-        updateAllCryptoBoxes(); // Ensure crypto boxes are updated immediately
+        updateAllCryptoBoxes(); 
     } catch (error) {
         console.error('Error updating tables:', error);
     }
 }
 
-// Initial load and periodic updates
 document.addEventListener('DOMContentLoaded', async () => {
     await updateAllTables();
     setInterval(updateAllTables, 30000);
@@ -206,12 +205,11 @@ document.addEventListener('DOMContentLoaded', () => {
         table.addEventListener('click', (event) => {
             let row = event.target.closest('tr');
             if (row && row.parentNode.nodeName === 'TBODY') {
-                const imgElement = row.querySelector('img'); // Ottiene l'elemento <img>
+                const imgElement = row.querySelector('img'); 
                 const asset = imgElement.alt.trim();
                 const price = row.cells[1].textContent.trim();
                 const imageUrl = imgElement.src.trim();
 
-                // Reindirizza a operation.php con i parametri dell'URL
                 window.location.href = `operation.php?asset=${encodeURIComponent(asset)}&price=${encodeURIComponent(price)}&imageUrl=${encodeURIComponent(imageUrl)}`;
             }
         });
@@ -273,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cryptoBoxes = document.querySelectorAll('.crypto-box');
     cryptoBoxes.forEach(box => {
         box.addEventListener('click', async () => {
-            const currency = box.id; // L'ID del box è usato per identificare la valuta
+            const currency = box.id; 
             const data = await fetchChartData(currency);
             updateChart(data, currency.toUpperCase());
         });

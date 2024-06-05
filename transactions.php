@@ -32,8 +32,6 @@ $rows = $stmt->fetchAll();
         <div class="link-group">
             <a href="main.php"><img src="side-icons/dashboard.png" alt="Dashboard"> Dashboard</a>
             <a href="wallet.php"><img src="side-icons/wallet.png" alt="Wallet"> Wallet</a>
-            <!--<a href="#"><img src="side-icons/trading.png" alt="Trading"> Trading</a>-->
-            <!--<a href="#"><img src="side-icons/security.png" alt="Security"> Security</a>-->
             <a href="transactions.php"><img src="side-icons/transactions.png" alt="Transactions"> Transactions</a>
         </div>
         <div class="bottom-links">
