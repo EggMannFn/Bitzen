@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BITZEN | Login</title>
-    <link rel="stylesheet" href="../navbar.css">
+    <link rel="stylesheet" href="../../styles/navbar.css">
     <link rel="stylesheet" href="login.css">
-    <link rel="icon" type="image/x-icon" href="../logo.ico">
+    <link rel="icon" type="image/x-icon" href="../../assets/icons/logo.ico">
 </head>
 <body>
 <header>

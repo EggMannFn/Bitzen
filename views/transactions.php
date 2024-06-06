@@ -1,6 +1,5 @@
 <?php
-
-require_once("processing/config.php");
+require_once("../config/config.php");
 
 session_start();
 if(!isset($_SESSION["login"]) || $_SESSION["login"] != true) {
@@ -19,7 +18,7 @@ $rows = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="transactions.css">
+    <link rel="stylesheet" href="../styles/transactions.css">
     <title>BITZEN | Transactions </title>
     <link rel="icon" type="image/x-icon" href="logo.ico">
 </head>
@@ -30,12 +29,12 @@ $rows = $stmt->fetchAll();
     <div class="sidebar">
         <h2>Dashboard</h2>
         <div class="link-group">
-            <a href="main.php"><img src="side-icons/dashboard.png" alt="Dashboard"> Dashboard</a>
-            <a href="wallet.php"><img src="side-icons/wallet.png" alt="Wallet"> Wallet</a>
-            <a href="transactions.php"><img src="side-icons/transactions.png" alt="Transactions"> Transactions</a>
+            <a href="main.php"><img src="../assets/side-icons/dashboard.png" alt="Dashboard"> Dashboard</a>
+            <a href="wallet.php"><img src="../assets/side-icons/wallet.png" alt="Wallet"> Wallet</a>
+            <a href="transactions.php"><img src="../assets/side-icons/transactions.png" alt="Transactions"> Transactions</a>
         </div>
         <div class="bottom-links">
-            <a href="logout.php"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
+            <a href="logout.php"><img src="../assets/side-icons/logout.png" alt="Logout"> Logout</a>
         </div>
     </div>
 

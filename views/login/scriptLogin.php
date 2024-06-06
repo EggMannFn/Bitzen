@@ -1,5 +1,5 @@
 <?php
-require_once ("../processing/config.php");
+require_once ("../../config/config.php");
 
 //controllo $_COOKIE
 if(isset($_COOKIE["email"]) && isset($_COOKIE["password"])) {

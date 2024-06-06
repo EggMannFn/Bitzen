@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BITZEN | Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/logo.ico">
 </head>
 <body>
     <?php
-require_once("processing/config.php");
+require_once("../config/config.php");
     session_start();
     if (!isset($_SESSION["login"]) || $_SESSION["login"] != true) {
         header("Location: index.php");
@@ -22,12 +22,12 @@ require_once("processing/config.php");
 <div class="sidebar">
     <h2>Dashboard</h2>
     <div class="link-group">
-        <a href="main.php"><img src="side-icons/dashboard.png" alt="Dashboard"> Dashboard</a>
-        <a href="wallet.php"><img src="side-icons/wallet.png" alt="Wallet"> Wallet</a>
-        <a href="transactions.php"><img src="side-icons/transactions.png" alt="Transactions"> Transactions</a>
+        <a href="main.php"><img src="../assets/side-icons/dashboard.png" alt="Dashboard"> Dashboard</a>
+        <a href="wallet.php"><img src="../assets/side-icons/wallet.png" alt="Wallet"> Wallet</a>
+        <a href="transactions.php"><img src="../assets/side-icons/transactions.png" alt="Transactions"> Transactions</a>
     </div>
     <div class="bottom-links">
-        <a href="logout.php"><img src="side-icons/logout.png" alt="Logout"> Logout</a>
+        <a href="logout.php"><img src="../assets/side-icons/logout.png" alt="Logout"> Logout</a>
     </div>
 </div>
         <div class="main">
@@ -142,6 +142,6 @@ require_once("processing/config.php");
         </div>
     </div>
     
-    <script src="script.js"></script>
+    <script src="../scripts/script.js"></script>
 </body>
 </html>

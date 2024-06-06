@@ -1,5 +1,5 @@
 <?php
-require_once("../processing/config.php");
+require_once ("../../config/config.php");
 
 if (isset($_POST["nome"]) && isset($_POST["cognome"]) && isset($_POST["data_nascita"]) && isset($_POST["telefono"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm_password"]) && isset($_POST["terms"])) {
 
@@ -23,8 +23,8 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BITZEN | Register</title>
     <link rel="stylesheet" href="register.css">
-    <link rel="stylesheet" href="../navbar.css">
-    <link rel="icon" type="image/x-icon" href="../logo.ico">
+    <link rel="stylesheet" href="../../styles/navbar.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/icons/logo.ico">
 </head>
 <body>
 <header>
@@ -100,6 +100,6 @@ $email = isset($_POST['email']) ? $_POST['email'] : '';
             </form>
         </div>
     </main>
-    <script src="register.js" defer></script>
+    <script src="../../scripts/register.js" defer></script>
 </body>
 </html>

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitzen | Accumula le tue crypto</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/navbar.css">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/logo.ico">
 </head>
 <body>
 <header>
@@ -14,11 +14,11 @@
         <nav>
             <div><a class="logo" href="./index.php">BITZEN</a></div>
             <ul>
-                <li class="btn_navbar"><a href="#">Compra Crypto</a></li>
-                <li class="btn_navbar"><a href="#">Mercati</a></li>
-                <li class="btn_navbar"><a href="#">Prezzi</a></li>
-                <li class="btn_navbar"><a href="#">Trading</a></li>
-                <li class="btn_navbar"><a href="#">Altro</a></li>
+                <li class="btn_navbar"><a href="">Compra Crypto</a></li>
+                <li class="btn_navbar"><a href="">Mercati</a></li>
+                <li class="btn_navbar"><a href="">Prezzi</a></li>
+                <li class="btn_navbar"><a href="">Trading</a></li>
+                <li class="btn_navbar"><a href="">Altro</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
@@ -29,7 +29,7 @@
 </header>
 
 <video autoplay muted loop id="videoBg">
-  <source src="bg_video.mp4" type="video/mp4">
+  <source src="../assets/videos/bg_video.mp4" type="video/mp4">
 </video>
 
 <div class="hero-section">
