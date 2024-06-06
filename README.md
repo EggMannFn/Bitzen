@@ -1,15 +1,15 @@
 
 # Bitzen
 
-Bitzen is a digital service for tokenizing and managing assets on the blockchain. This project includes various tools and features to facilitate the creation, management, and exchange of digital tokens.
+Bitzen is a digital service for training and learning about blockchain. This project includes basic tools and features to facilitate the learning and exchange of digital tokens.
 
 ## Features
 
-- **Token Management**: Create and manage digital tokens easily.
-- **Blockchain Integration**: Seamless integration with blockchain networks for secure transactions.
+- **Free**: The project is free and it's there NOT to be used but to be modified for learning purposes.
+- **Top Coins**: As basic as the project is, it contains the five top coins.
 - **User Management**: Comprehensive user management system including registration, authentication, and profile management.
-- **API Access**: Provides a robust API for interacting with the platform programmatically.
-- **Web Interface**: User-friendly web interface for managing tokens and user profiles.
+- **Free API**: It's programmed to access limited but free api (binance and coingecko).
+- **Web Interface**: User-friendly web interface for managing tokens.
 
 ## Installation
 
@@ -23,31 +23,26 @@ To get started with Bitzen, follow these steps:
    ```sh
    cd Bitzen
    ```
-3. Install the required dependencies:
+3. Install XAMPP for Windows, Linux, MacOS:
    ```sh
-   npm install
+   https://www.apachefriends.org/it/download.html
    ```
-4. Start the development server:
+4. Turn on Apache and MySQL:
+5. Access the website:
    ```sh
-   npm start
+   http://localhost/eggmannfn.github.io/index.html
    ```
-
+   
 ## Usage
 
-### Creating a Token
+### Trading
 
-To create a new token, use the web interface or the API endpoint:
+To create a trade, use the web interface:
 
 #### Via Web Interface
 1. Navigate to the Tokens section.
-2. Click on "Create New Token".
+2. Click on "Trade Token".
 3. Fill in the required details and submit the form.
-
-#### Via API
-Send a POST request to `/api/tokens` with the necessary parameters:
-```sh
-curl -X POST -H "Content-Type: application/json" -d '{"name": "MyToken", "symbol": "MTK", "initialSupply": 1000}' http://localhost:3000/api/tokens
-```
 
 ### Managing Users
 
@@ -61,9 +56,10 @@ Use the User Management features to register and authenticate users:
 1. Go to the Login page.
 2. Enter your credentials and log in.
 
-## API Documentation
+## Database Managment
+1. Access phpmyadmin page.
+2. Delete, Create, Update, Delete Users.
 
-The API documentation is available at `/docs` once the server is running. It includes detailed information on all available endpoints, request formats, and response structures.
 
 ## Contributing
 
@@ -76,7 +72,7 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the GPL-3.0 License. See the [LICENSE](LICENSE) file for more details.
 
 ## Contact
 
@@ -84,4 +80,4 @@ For questions or support, please open an issue in the repository or contact the 
 
 ---
 
-*This project is maintained by [EggMannFn](https://github.com/EggMannFn/).*
+*This project is maintained by [EggMannFn](https://github.com/EggMannFn/), [Moncayo5Bi](https://github.com/Moncayo5Bi), [denisonumayam](https://github.com/denisonumayam).*
