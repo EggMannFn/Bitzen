@@ -28,7 +28,10 @@ To get started with Bitzen, follow these steps:
    https://www.apachefriends.org/it/download.html
    ```
 4. Turn on Apache and MySQL:
-5. Access the website:
+   ```sh
+   Check the box of the two services
+   ```
+6. Access the website:
    ```sh
    http://localhost/eggmannfn.github.io/index.html
    ```
