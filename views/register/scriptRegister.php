@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once ("../processing/config.php");
+require_once ("../../config/config.php");
 
 if(isset($_POST["email"], $_POST["password"], $_POST["confirm_password"], $_POST["data_nascita"], $_POST["telefono"])){
 
