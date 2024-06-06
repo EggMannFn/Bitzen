@@ -20,7 +20,7 @@ $rows = $stmt->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/transactions.css">
     <title>BITZEN | Transactions </title>
-    <link rel="icon" type="image/x-icon" href="logo.ico">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/logo.ico">
 </head>
 <body>
 

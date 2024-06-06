@@ -7,6 +7,6 @@ session_destroy();
 setcookie("email", "", time() - 3600, "/");
 setcookie("password", "", time() - 3600, "/");
 
-header("Location: ./login/login.php");
+header("Location: ../views/index.php");
 exit;
 ?>
