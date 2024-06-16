@@ -7,7 +7,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
 
     // Controllo se le password corrispondono
     if (password !== confirmPassword) {
-        alert('Le password non corrispondono.');
+        alert('Passwords do not correspond.');
         event.preventDefault();
         return;
     }
@@ -21,14 +21,14 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         age--;
     }
     if (age < 18) {
-        alert('Devi essere maggiorenne per registrarti.');
+        alert('You have to be older than 18 to register.');
         event.preventDefault();
         return;
     }
 
     // Controllo se il telefono ha 10 cifre
     if (phone.length !== 10) {
-        alert('Il numero di telefono deve avere 10 cifre.');
+        alert('Phone number should have 10 digits.');
         event.preventDefault();
         return;
     }
@@ -36,7 +36,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     // Controllo se la mail è valida
     var emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
     if (!emailRegex.test(email)) {
-        alert('Inserisci un indirizzo email valido.');
+        alert('Insert a valid email address.');
         event.preventDefault();
         return;
     }
@@ -44,7 +44,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     // Controllo se la password ha almeno 8 caratteri
     var password = document.getElementById('password').value;
     if (password.length < 8) {
-        alert('La password deve avere almeno 8 caratteri.');
+        alert('Password should have minimum 8 characters.');
         event.preventDefault();
         return;
     }

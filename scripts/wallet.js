@@ -1,4 +1,4 @@
-
+// ! statico fix in non statico --
 var ctx = document.getElementById('myChartBalance').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'line',
